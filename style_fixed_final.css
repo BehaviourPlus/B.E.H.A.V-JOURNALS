@@ -1,0 +1,11585 @@
+/* =========================================================
+   B.E.H.A.V JOURNAL
+   2.1 - CORE DESIGN SYSTEM
+========================================================= */
+
+
+/* =========================================================
+   01. GOOGLE FONT
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   02. COLOR SYSTEM
+========================================================= */
+
+:root {
+
+    --primary: #256b68;
+    --primary-dark: #174e4c;
+    --primary-light: #e4f3f1;
+
+    --secondary: #f2b84b;
+    --secondary-light: #fff5dc;
+
+    --blue: #4f7cac;
+    --blue-light: #eaf2fb;
+
+    --success: #4c9b73;
+    --success-light: #e8f5ee;
+
+    --danger: #d86b6b;
+    --danger-light: #fbeaea;
+
+    --text-main: #243434;
+    --text-secondary: #687777;
+    --text-light: #9aa7a7;
+
+    --background: #f5f8f7;
+    --surface: #ffffff;
+
+    --border: #e4ebe9;
+
+    --shadow-sm:
+        0 4px 12px rgba(35, 68, 67, 0.05);
+
+    --shadow-md:
+        0 12px 30px rgba(35, 68, 67, 0.08);
+
+    --shadow-lg:
+        0 20px 50px rgba(35, 68, 67, 0.12);
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+}
+
+
+/* =========================================================
+   03. RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family:
+        'Be Vietnam Pro',
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(37, 107, 104, 0.07),
+            transparent 30%
+        ),
+        var(--background);
+
+    color: var(--text-main);
+
+    min-height: 100vh;
+
+    line-height: 1.6;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* =========================================================
+   04. MAIN LAYOUT
+========================================================= */
+
+body {
+    display: flex;
+}
+
+
+/* =========================================================
+   05. SIDEBAR
+========================================================= */
+
+.sidebar {
+
+    width: 255px;
+
+    min-height: 100vh;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 28px 18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f7fbfa 100%
+        );
+
+    border-right:
+        1px solid
+        rgba(37, 107, 104, 0.10);
+
+    box-shadow:
+        8px 0 30px rgba(35, 68, 67, 0.03);
+}
+
+
+/* =========================================================
+   06. LOGO
+========================================================= */
+
+.logo {
+
+    position: relative;
+
+    padding:
+        6px 12px
+        24px;
+
+    margin-bottom: 22px;
+}
+
+
+.logo::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background:
+        var(--primary-light);
+
+    left: 2px;
+    top: -2px;
+
+    z-index: 0;
+}
+
+
+.logo h2 {
+
+    position: relative;
+
+    z-index: 1;
+
+    color:
+        var(--primary-dark);
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    line-height: 1.1;
+}
+
+
+.logo span {
+
+    position: relative;
+
+    z-index: 1;
+
+    display: block;
+
+    margin-top: 5px;
+
+    color:
+        var(--text-light);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================================
+   07. MENU
+========================================================= */
+
+.menu {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.menu-item {
+
+    position: relative;
+
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    padding: 13px 14px;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.menu-item:hover {
+
+    background:
+        rgba(37, 107, 104, 0.06);
+
+    color:
+        var(--primary);
+
+    transform:
+        translateX(3px);
+}
+
+
+.menu-item.active {
+
+    background:
+        linear-gradient(
+            135deg,
+            #e4f3f1,
+            #edf7f5
+        );
+
+    color:
+        var(--primary-dark);
+
+    font-weight: 700;
+
+    box-shadow:
+        var(--shadow-sm);
+}
+
+
+/* thanh nhỏ bên trái menu active */
+
+.menu-item.active::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -18px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 4px;
+
+    height: 24px;
+
+    border-radius:
+        0 5px 5px 0;
+
+    background:
+        var(--primary);
+}
+
+
+/* =========================================================
+   08. ACCOUNT
+========================================================= */
+
+.account {
+
+    margin-top: auto;
+
+    padding:
+        18px 8px 5px;
+
+    border-top:
+        1px solid
+        var(--border);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+.avatar {
+
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #4a918b
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 15px
+        rgba(37, 107, 104, 0.20);
+}
+
+
+.account strong {
+
+    display: block;
+
+    color:
+        var(--text-main);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.account small {
+
+    display: block;
+
+    margin-top: 1px;
+
+    color:
+        var(--text-light);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   09. MAIN CONTENT
+========================================================= */
+
+.main-content {
+
+    margin-left: 255px;
+
+    width:
+        calc(100% - 255px);
+
+    min-height: 100vh;
+
+    padding:
+        42px 52px;
+
+    position: relative;
+}
+
+
+/* hiệu ứng ánh sáng nền */
+
+.main-content::before {
+
+    content: "";
+
+    position: fixed;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(242, 184, 75, 0.05);
+
+    top: -100px;
+    right: -80px;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   10. PAGE SYSTEM
+========================================================= */
+
+.page {
+
+    display: none;
+
+    width: 100%;
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    animation:
+        pageEnter 0.35s ease;
+}
+
+
+.page.active {
+
+    display: block;
+}
+
+
+@keyframes pageEnter {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+}
+
+
+/* =========================================================
+   11. COMMON TYPOGRAPHY
+========================================================= */
+
+.page h1 {
+
+    color:
+        var(--text-main);
+
+    font-size: 31px;
+
+    line-height: 1.25;
+
+    font-weight: 800;
+
+    letter-spacing: -0.6px;
+
+    margin-bottom: 7px;
+}
+
+
+.page > p {
+
+    color:
+        var(--text-secondary);
+
+    font-size: 14px;
+
+    margin-bottom: 30px;
+}
+
+
+.welcome-label {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color:
+        var(--primary);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+
+.welcome-label::before {
+
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background:
+        var(--secondary);
+}
+
+
+/* =========================================================
+   12. COMMON CARD
+========================================================= */
+
+.stat-card,
+.recent-card,
+.journal-form,
+.review-content,
+.progress-card,
+.feedback-card,
+.detail-card,
+.teacher-journal-card,
+.teacher-feedback {
+
+    background:
+        rgba(255, 255, 255, 0.92);
+
+    border:
+        1px solid
+        rgba(228, 235, 233, 0.9);
+
+    box-shadow:
+        var(--shadow-sm);
+
+    border-radius:
+        var(--radius-md);
+}
+
+
+/* =========================================================
+   13. COMMON BUTTON
+========================================================= */
+
+button {
+
+    font-family: inherit;
+}
+
+
+.primary-btn {
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #37827d
+        );
+
+    color: white;
+
+    padding:
+        12px 20px;
+
+    border-radius:
+        11px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 18px
+        rgba(37, 107, 104, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+
+.primary-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 24px
+        rgba(37, 107, 104, 0.25);
+
+    filter:
+        brightness(1.03);
+}
+
+
+.primary-btn:active {
+
+    transform:
+        translateY(0);
+}
+
+
+.secondary-btn {
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        white;
+
+    color:
+        var(--text-secondary);
+
+    padding:
+        12px 20px;
+
+    border-radius:
+        11px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.secondary-btn:hover {
+
+    border-color:
+        var(--primary);
+
+    color:
+        var(--primary);
+
+    background:
+        var(--primary-light);
+}
+
+
+/* =========================================================
+   14. MOBILE / TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+
+        width: 220px;
+    }
+
+    .main-content {
+
+        margin-left: 220px;
+
+        width:
+            calc(100% - 220px);
+
+        padding:
+            35px 30px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+
+        width: 72px;
+
+        padding:
+            22px 10px;
+    }
+
+
+    .logo {
+
+        text-align: center;
+
+        padding:
+            6px 0 24px;
+    }
+
+
+    .logo h2 {
+
+        font-size: 15px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .logo span {
+
+        display: none;
+    }
+
+
+    .logo::before {
+
+        width: 30px;
+        height: 30px;
+
+        left: 11px;
+    }
+
+
+    .menu-item {
+
+        justify-content:
+            center;
+
+        padding:
+            13px 5px;
+    }
+
+
+    .menu-item span {
+
+        display: none;
+    }
+
+
+    .menu-item.active::before {
+
+        left: -10px;
+    }
+
+
+    .account {
+
+        justify-content:
+            center;
+
+        padding:
+            18px 0 5px;
+    }
+
+
+    .account > div:not(.avatar) {
+
+        display: none;
+    }
+
+
+    .main-content {
+
+        margin-left: 72px;
+
+        width:
+            calc(100% - 72px);
+
+        padding:
+            25px 18px;
+    }
+
+
+    .page h1 {
+
+        font-size: 25px;
+    }
+}
+
+/* =========================================================
+   2.2 - SIDEBAR B.E.H.A.V JOURNAL
+========================================================= */
+
+
+/* =========================================================
+   01. LOGO - HIỆU ỨNG NHẬN DIỆN
+========================================================= */
+
+.logo {
+    overflow: hidden;
+}
+
+
+.logo h2 {
+    background: linear-gradient(
+        135deg,
+        var(--primary-dark),
+        var(--primary)
+    );
+
+    -webkit-text-fill-color: transparent;
+}
+
+
+.logo::after {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 3px;
+
+    margin-top: 12px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
+}
+
+
+/* =========================================================
+   02. MENU ITEM
+========================================================= */
+
+.menu-item {
+    overflow: hidden;
+}
+
+
+/* vùng icon */
+
+.menu-item::after {
+    content: "";
+
+    position: absolute;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    background: rgba(37, 107, 104, 0.04);
+
+    right: -35px;
+    top: -35px;
+
+    opacity: 0;
+
+    transition: 0.3s ease;
+
+    pointer-events: none;
+}
+
+
+.menu-item:hover::after {
+    opacity: 1;
+}
+
+
+/* icon khi active */
+
+.menu-item.active {
+    position: relative;
+}
+
+
+.menu-item.active::after {
+    opacity: 1;
+
+    background:
+        rgba(37, 107, 104, 0.06);
+}
+
+
+/* =========================================================
+   03. ACCOUNT CARD
+========================================================= */
+
+.account {
+    position: relative;
+
+    margin-left: 2px;
+    margin-right: 2px;
+
+    padding:
+        13px 10px;
+
+    border:
+        1px solid
+        rgba(228, 235, 233, 0.8);
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(255, 255, 255, 0.75);
+
+    box-shadow:
+        0 5px 15px
+        rgba(35, 68, 67, 0.04);
+
+    transition: 0.25s ease;
+}
+
+
+.account:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        var(--shadow-sm);
+}
+
+
+/* =========================================================
+   04. AVATAR
+========================================================= */
+
+.avatar {
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.avatar::after {
+    content: "";
+
+    position: absolute;
+
+    width: 16px;
+    height: 16px;
+
+    border-radius: 50%;
+
+    background:
+        var(--secondary);
+
+    right: -3px;
+    bottom: -3px;
+
+    border:
+        3px solid white;
+}
+
+
+/* =========================================================
+   05. SIDEBAR DECORATION
+========================================================= */
+
+.sidebar::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(37, 107, 104, 0.035);
+
+    top: 120px;
+    left: -70px;
+
+    pointer-events: none;
+}
+
+
+.sidebar::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(242, 184, 75, 0.12);
+
+    bottom: 90px;
+    right: -40px;
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   2.3 - DASHBOARD / TRANG TỔNG QUAN
+========================================================= */
+
+
+/* =========================================================
+   01. HEADER DASHBOARD
+========================================================= */
+
+.dashboard-header {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 32px;
+
+    padding:
+        30px 32px;
+
+    border-radius:
+        24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #eef8f6 100%
+        );
+
+    border:
+        1px solid
+        rgba(37, 107, 104, 0.08);
+
+    box-shadow:
+        var(--shadow-md);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* vòng tròn trang trí */
+
+.dashboard-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(37, 107, 104, 0.06);
+
+    right: -60px;
+    top: -80px;
+}
+
+
+.dashboard-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(242, 184, 75, 0.10);
+
+    right: 100px;
+    bottom: -40px;
+}
+
+
+/* nội dung header */
+
+.dashboard-header > div {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+.dashboard-header h1 {
+    margin-bottom: 5px;
+}
+
+
+.dashboard-header p {
+    color:
+        var(--text-secondary);
+
+    font-size: 14px;
+}
+
+
+/* nút header */
+
+.dashboard-header .primary-btn {
+    position: relative;
+
+    z-index: 2;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   02. STATISTICS
+========================================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 38px;
+}
+
+
+.stat-card {
+
+    min-height: 115px;
+
+    padding:
+        22px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.stat-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        var(--shadow-md);
+}
+
+
+/* vòng trang trí */
+
+.stat-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+
+    right: -25px;
+    bottom: -35px;
+
+    background:
+        var(--primary-light);
+
+    opacity: 0.7;
+}
+
+
+/* icon */
+
+.stat-icon {
+
+    width: 50px;
+    height: 50px;
+
+    flex-shrink: 0;
+
+    border-radius:
+        14px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+
+    background:
+        var(--primary-light);
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+.stat-card:nth-child(2)
+.stat-icon {
+
+    background:
+        var(--secondary-light);
+}
+
+
+.stat-card:nth-child(3)
+.stat-icon {
+
+    background:
+        var(--blue-light);
+}
+
+
+/* số */
+
+.stat-number {
+
+    display: block;
+
+    color:
+        var(--text-main);
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* label */
+
+.stat-label {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color:
+        var(--text-secondary);
+
+    font-size: 12px;
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   03. RECENT SECTION
+========================================================= */
+
+.recent-section {
+
+    margin-top: 5px;
+}
+
+
+/* title */
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 17px;
+}
+
+
+.section-title h2 {
+
+    color:
+        var(--text-main);
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    margin-bottom: 3px;
+}
+
+
+.section-title p {
+
+    color:
+        var(--text-light);
+
+    font-size: 12px;
+}
+
+
+/* nút xem tất cả */
+
+.text-btn {
+
+    border: none;
+
+    background: transparent;
+
+    color:
+        var(--primary);
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    padding: 8px;
+
+    transition:
+        0.2s ease;
+}
+
+
+.text-btn:hover {
+
+    color:
+        var(--primary-dark);
+
+    transform:
+        translateX(3px);
+}
+
+
+/* =========================================================
+   04. RECENT CARD
+========================================================= */
+
+.recent-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding:
+        18px 20px;
+
+    margin-bottom: 12px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+
+    cursor: pointer;
+}
+
+
+.recent-card:hover {
+
+    transform:
+        translateX(4px);
+
+    border-color:
+        rgba(37, 107, 104, 0.16);
+
+    box-shadow:
+        var(--shadow-md);
+}
+
+
+/* icon nhật ký */
+
+.recent-icon {
+
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius:
+        14px;
+
+    background:
+        var(--primary-light);
+
+    font-size: 20px;
+}
+
+
+/* nội dung */
+
+.recent-content {
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.recent-content h3 {
+
+    color:
+        var(--text-main);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    margin-bottom: 4px;
+}
+
+
+.recent-content p {
+
+    color:
+        var(--text-secondary);
+
+    font-size: 12px;
+
+    margin-bottom: 8px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* metadata */
+
+.recent-meta {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    color:
+        var(--text-light);
+
+    font-size: 10px;
+}
+
+
+.recent-meta .status {
+
+    color:
+        var(--success);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   05. DASHBOARD RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .dashboard-header {
+
+        padding: 25px;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .stats {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 12px;
+    }
+
+
+    .stat-card {
+
+        padding: 17px;
+
+        gap: 11px;
+    }
+
+
+    .stat-icon {
+
+        width: 43px;
+        height: 43px;
+
+        font-size: 19px;
+    }
+
+
+    .stat-number {
+
+        font-size: 21px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .stats {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .dashboard-header {
+
+        padding: 22px;
+    }
+
+
+    .dashboard-header .primary-btn {
+
+        width: 100%;
+    }
+
+
+    .recent-card {
+
+        align-items: flex-start;
+
+        padding: 15px;
+    }
+
+
+    .recent-content p {
+
+        white-space: normal;
+    }
+}
+
+/* =========================================================
+   2.4 - CSS GHI NHẬT KÝ
+   Guided Journal Experience
+========================================================= */
+
+
+/* =========================================================
+   01. JOURNAL HEADER
+========================================================= */
+
+.journal-header {
+
+    margin-bottom: 28px;
+
+    padding: 4px 2px;
+}
+
+
+.journal-header h1 {
+
+    margin-bottom: 6px;
+}
+
+
+.journal-header p {
+
+    color:
+        var(--text-secondary);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   02. PROGRESS STEPPER
+========================================================= */
+
+.progress-container {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin-bottom: 26px;
+
+    padding:
+        20px 24px;
+
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        var(--radius-md);
+
+    box-shadow:
+        var(--shadow-sm);
+}
+
+
+.progress-step {
+
+    min-width: 90px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 7px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.progress-step span {
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        #edf1f0;
+
+    color:
+        var(--text-light);
+
+    border:
+        2px solid
+        #e2e9e7;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    transition:
+        0.25s ease;
+}
+
+
+.progress-step p {
+
+    color:
+        var(--text-light);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* bước hiện tại */
+
+.progress-step.active span {
+
+    background:
+        var(--primary);
+
+    border-color:
+        var(--primary);
+
+    color:
+        white;
+
+    box-shadow:
+        0 5px 14px
+        rgba(37, 107, 104, 0.25);
+}
+
+
+.progress-step.active p {
+
+    color:
+        var(--primary-dark);
+
+    font-weight: 800;
+}
+
+
+/* đường nối */
+
+.progress-line {
+
+    flex: 1;
+
+    height: 2px;
+
+    margin-top: 17px;
+
+    background:
+        #e3eae8;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   03. JOURNAL FORM
+========================================================= */
+
+.journal-form {
+
+    width: 100%;
+
+    max-width: 920px;
+
+    margin: 0 auto;
+
+    padding:
+        38px 42px;
+
+    background:
+        rgba(255, 255, 255, 0.95);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        24px;
+
+    box-shadow:
+        var(--shadow-md);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* đường màu trên đầu card */
+
+.journal-form::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            #4c928c,
+            var(--secondary)
+        );
+}
+
+
+/* =========================================================
+   04. JOURNAL STEP
+========================================================= */
+
+.journal-step {
+
+    display: none;
+
+    animation:
+        stepEnter 0.3s ease;
+}
+
+
+.journal-step.active {
+
+    display: block;
+}
+
+
+@keyframes stepEnter {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(10px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* số bước */
+
+.step-number {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding:
+        5px 10px;
+
+    margin-bottom: 13px;
+
+    border-radius:
+        20px;
+
+    background:
+        var(--primary-light);
+
+    color:
+        var(--primary);
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+
+/* tiêu đề bước */
+
+.journal-step h2 {
+
+    color:
+        var(--text-main);
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    margin-bottom: 9px;
+}
+
+
+.journal-step .question {
+
+    color:
+        var(--text-main);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    margin-bottom: 6px;
+}
+
+
+.journal-step .hint {
+
+    color:
+        var(--text-secondary);
+
+    font-size: 12px;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   05. TEXTAREA
+========================================================= */
+
+.journal-step textarea {
+
+    width: 100%;
+
+    min-height: 145px;
+
+    resize: vertical;
+
+    padding:
+        16px 17px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        13px;
+
+    background:
+        #fbfcfc;
+
+    color:
+        var(--text-main);
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    outline: none;
+
+    transition:
+        border 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.journal-step textarea::placeholder {
+
+    color:
+        #aab5b3;
+}
+
+
+.journal-step textarea:focus {
+
+    border-color:
+        var(--primary);
+
+    background:
+        white;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(37, 107, 104, 0.08);
+}
+
+
+/* =========================================================
+   06. LABEL
+========================================================= */
+
+.journal-step label {
+
+    display: block;
+
+    color:
+        var(--text-main);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin:
+        20px 0 9px;
+}
+
+
+/* =========================================================
+   07. STEP ACTIONS
+========================================================= */
+
+.step-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 28px;
+
+    padding-top: 22px;
+
+    border-top:
+        1px solid
+        #edf1f0;
+}
+
+
+.step-actions .primary-btn {
+
+    min-width: 125px;
+}
+
+
+.step-actions .secondary-btn {
+
+    min-width: 110px;
+}
+
+
+/* =========================================================
+   08. EMOTION GRID
+========================================================= */
+
+.emotion-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+
+    margin:
+        20px 0 24px;
+}
+
+
+.emotion-item {
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        #fbfcfc;
+
+    border-radius:
+        14px;
+
+    padding:
+        14px 8px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition:
+        0.2s ease;
+}
+
+
+.emotion-item span {
+
+    font-size: 26px;
+
+    line-height: 1;
+}
+
+
+.emotion-item small {
+
+    color:
+        var(--text-secondary);
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.emotion-item:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(37, 107, 104, 0.25);
+
+    box-shadow:
+        var(--shadow-sm);
+
+    background:
+        white;
+}
+
+
+/* JS sau này sẽ thêm class selected */
+
+.emotion-item.selected {
+
+    border-color:
+        var(--primary);
+
+    background:
+        var(--primary-light);
+
+    box-shadow:
+        0 5px 15px
+        rgba(37, 107, 104, 0.10);
+}
+
+
+.emotion-item.selected small {
+
+    color:
+        var(--primary-dark);
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   09. 3S CARD
+========================================================= */
+
+.three-s-card {
+
+    margin-top: 18px;
+
+    padding:
+        22px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        17px;
+
+    background:
+        #fcfdfd;
+
+    position: relative;
+
+    transition:
+        0.2s ease;
+}
+
+
+.three-s-card:hover {
+
+    border-color:
+        rgba(37, 107, 104, 0.18);
+
+    box-shadow:
+        var(--shadow-sm);
+}
+
+
+/* tiêu đề 3S */
+
+.three-s-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+
+.three-s-title > span {
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius:
+        11px;
+
+    background:
+        var(--primary-light);
+
+    color:
+        var(--primary);
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+.three-s-title h3 {
+
+    color:
+        var(--primary-dark);
+
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+
+.three-s-title p {
+
+    color:
+        var(--text-light);
+
+    font-size: 10px;
+
+    margin-top: 1px;
+}
+
+
+.three-s-card > p {
+
+    color:
+        var(--text-secondary);
+
+    font-size: 12px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   10. CHECKBOX / RADIO
+========================================================= */
+
+.checkbox-item,
+.radio-item {
+
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        10px 12px;
+
+    margin:
+        5px 0 !important;
+
+    border-radius:
+        9px;
+
+    background:
+        white;
+
+    border:
+        1px solid
+        transparent;
+
+    cursor: pointer;
+
+    font-size: 12px !important;
+
+    font-weight: 500 !important;
+
+    color:
+        var(--text-secondary) !important;
+
+    transition:
+        0.2s ease;
+}
+
+
+.checkbox-item:hover,
+.radio-item:hover {
+
+    border-color:
+        var(--border);
+
+    background:
+        #f8fbfa;
+}
+
+
+.checkbox-item input,
+.radio-item input {
+
+    accent-color:
+        var(--primary);
+
+    width: 15px;
+    height: 15px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   11. RATING
+========================================================= */
+
+.rating {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin:
+        12px 0 20px;
+}
+
+
+.rating button {
+
+    width: 48px;
+    height: 48px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        13px;
+
+    background:
+        #fbfcfc;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.rating button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        var(--shadow-sm);
+}
+
+
+.rating button.selected {
+
+    border-color:
+        var(--secondary);
+
+    background:
+        var(--secondary-light);
+
+    box-shadow:
+        0 5px 14px
+        rgba(242, 184, 75, 0.15);
+}
+
+
+/* =========================================================
+   12. SUGGESTIONS
+========================================================= */
+
+.suggestions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin:
+        12px 0 28px;
+}
+
+
+.suggestions button {
+
+    border:
+        1px solid
+        #dfe8e5;
+
+    background:
+        #f8fbfa;
+
+    color:
+        var(--text-secondary);
+
+    padding:
+        8px 12px;
+
+    border-radius:
+        20px;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.suggestions button:hover {
+
+    border-color:
+        var(--primary);
+
+    color:
+        var(--primary);
+
+    background:
+        var(--primary-light);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   13. GOAL TITLE
+========================================================= */
+
+.goal-title {
+
+    margin-top: 10px !important;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid
+        var(--border);
+}
+
+
+/* =========================================================
+   14. JOURNAL RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .journal-form {
+
+        padding:
+            30px 25px;
+    }
+
+
+    .progress-container {
+
+        overflow-x: auto;
+
+        padding:
+            18px 15px;
+    }
+
+
+    .progress-step {
+
+        min-width: 75px;
+    }
+
+
+    .emotion-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .journal-form {
+
+        padding:
+            25px 18px;
+
+        border-radius:
+            18px;
+    }
+
+
+    .journal-step h2 {
+
+        font-size: 20px;
+    }
+
+
+    .progress-container {
+
+        gap: 0;
+    }
+
+
+    .progress-step p {
+
+        font-size: 8px;
+    }
+
+
+    .progress-line {
+
+        min-width: 15px;
+    }
+
+
+    .step-actions {
+
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+
+    .step-actions button {
+
+        width: 100%;
+    }
+
+
+    .rating {
+
+        justify-content:
+            space-between;
+    }
+
+
+    .rating button {
+
+        width: 43px;
+        height: 43px;
+    }
+}
+
+/* =========================================================
+   2.5 - EMOTION SELECTOR
+========================================================= */
+
+
+/* Khung tổng */
+
+.emotion-grid {
+    position: relative;
+
+    padding: 5px;
+
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   01. EMOTION ITEM
+========================================================= */
+
+.emotion-item {
+    position: relative;
+
+    min-height: 105px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f8fbfa
+        );
+
+    border-radius:
+        17px;
+
+    box-shadow:
+        0 3px 10px
+        rgba(35, 68, 67, 0.03);
+
+    transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
+}
+
+
+/* vòng trang trí phía sau */
+
+.emotion-item::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    right: -20px;
+    top: -25px;
+
+    background:
+        rgba(37, 107, 104, 0.035);
+
+    transition:
+        0.25s ease;
+}
+
+
+/* ánh sáng khi hover */
+
+.emotion-item::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    left: -10px;
+    bottom: -10px;
+
+    background:
+        rgba(242, 184, 75, 0.10);
+
+    opacity: 0;
+
+    transition:
+        0.25s ease;
+}
+
+
+.emotion-item:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(37, 107, 104, 0.20);
+
+    box-shadow:
+        0 10px 25px
+        rgba(35, 68, 67, 0.08);
+
+    background:
+        white;
+}
+
+
+.emotion-item:hover::before {
+
+    transform:
+        scale(1.3);
+
+    background:
+        rgba(37, 107, 104, 0.07);
+}
+
+
+.emotion-item:hover::after {
+
+    opacity: 1;
+
+    transform:
+        scale(1.5);
+}
+
+
+/* =========================================================
+   02. EMOTION ICON
+========================================================= */
+
+.emotion-item span {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 31px;
+
+    line-height: 1;
+
+    filter:
+        drop-shadow(
+            0 3px 4px
+            rgba(0, 0, 0, 0.06)
+        );
+
+    transition:
+        transform 0.22s ease;
+}
+
+
+.emotion-item:hover span {
+
+    transform:
+        scale(1.12)
+        rotate(-3deg);
+}
+
+
+/* tên cảm xúc */
+
+.emotion-item small {
+
+    position: relative;
+
+    z-index: 2;
+
+    color:
+        var(--text-secondary);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition:
+        0.2s ease;
+}
+
+
+/* =========================================================
+   03. TRẠNG THÁI ĐƯỢC CHỌN
+========================================================= */
+
+.emotion-item.selected {
+
+    border:
+        2px solid
+        var(--primary);
+
+    background:
+        linear-gradient(
+            145deg,
+            #edf8f6,
+            #e2f3f0
+        );
+
+    box-shadow:
+        0 10px 25px
+        rgba(37, 107, 104, 0.13);
+
+    transform:
+        translateY(-3px);
+}
+
+
+.emotion-item.selected::before {
+
+    width: 90px;
+    height: 90px;
+
+    right: -25px;
+    top: -30px;
+
+    background:
+        rgba(37, 107, 104, 0.08);
+}
+
+
+.emotion-item.selected span {
+
+    transform:
+        scale(1.12);
+}
+
+
+.emotion-item.selected small {
+
+    color:
+        var(--primary-dark);
+
+    font-weight: 800;
+}
+
+
+/* dấu ✓ */
+
+.emotion-item.selected .emotion-check {
+
+    display: flex;
+}
+
+
+/* =========================================================
+   04. NHÓM CẢM XÚC - MÀU NHẸ RIÊNG
+========================================================= */
+
+/* Vui */
+
+.emotion-item[data-emotion="Vui"]:hover,
+.emotion-item[data-emotion="Vui"].selected {
+
+    border-color:
+        #e4b53d;
+}
+
+
+/* Bình thường */
+
+.emotion-item[data-emotion="Bình thường"]:hover,
+.emotion-item[data-emotion="Bình thường"].selected {
+
+    border-color:
+        #8fa5a1;
+}
+
+
+/* Lo lắng */
+
+.emotion-item[data-emotion="Lo lắng"]:hover,
+.emotion-item[data-emotion="Lo lắng"].selected {
+
+    border-color:
+        #7398c1;
+}
+
+
+/* Tức giận */
+
+.emotion-item[data-emotion="Tức giận"]:hover,
+.emotion-item[data-emotion="Tức giận"].selected {
+
+    border-color:
+        #d87878;
+}
+
+
+/* Buồn */
+
+.emotion-item[data-emotion="Buồn"]:hover,
+.emotion-item[data-emotion="Buồn"].selected {
+
+    border-color:
+        #718db1;
+}
+
+
+/* Bực bội */
+
+.emotion-item[data-emotion="Bực bội"]:hover,
+.emotion-item[data-emotion="Bực bội"].selected {
+
+    border-color:
+        #d28b63;
+}
+
+
+/* Xấu hổ */
+
+.emotion-item[data-emotion="Xấu hổ"]:hover,
+.emotion-item[data-emotion="Xấu hổ"].selected {
+
+    border-color:
+        #b58aa9;
+}
+
+
+/* Bình tĩnh */
+
+.emotion-item[data-emotion="Bình tĩnh"]:hover,
+.emotion-item[data-emotion="Bình tĩnh"].selected {
+
+    border-color:
+        #62a78c;
+}
+
+
+/* =========================================================
+   05. RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .emotion-item {
+
+        min-height: 95px;
+
+        padding: 13px 7px;
+    }
+
+
+    .emotion-item span {
+
+        font-size: 27px;
+    }
+}
+
+
+@media (max-width: 420px) {
+
+    .emotion-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 8px;
+    }
+
+
+    .emotion-item {
+
+        min-height: 90px;
+    }
+}
+
+/* =========================================================
+   2.6 - B.E.H.A.V 3S PROCESS
+   STOP → THINK → SELECT
+========================================================= */
+
+
+/* =========================================================
+   01. KHUNG 3S
+========================================================= */
+
+.journal-step#step-3 {
+    position: relative;
+}
+
+
+/* Phần giới thiệu 3S */
+
+.journal-step#step-3::before {
+
+    content: "STOP  →  THINK  →  SELECT";
+
+    display: block;
+
+    width: fit-content;
+
+    margin:
+        0 auto 25px;
+
+    padding:
+        8px 15px;
+
+    border-radius:
+        30px;
+
+    background:
+        var(--primary-light);
+
+    color:
+        var(--primary);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   02. THREE S CARD
+========================================================= */
+
+.three-s-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    margin-top: 17px;
+
+    padding:
+        23px 24px 24px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f9fbfa
+        );
+
+    box-shadow:
+        0 4px 14px
+        rgba(35, 68, 67, 0.04);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.three-s-card:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(37, 107, 104, 0.18);
+
+    box-shadow:
+        var(--shadow-md);
+}
+
+
+/* =========================================================
+   03. DECORATION
+========================================================= */
+
+.three-s-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    right: -65px;
+    top: -65px;
+
+    background:
+        rgba(37, 107, 104, 0.035);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   04. TITLE 3S
+========================================================= */
+
+.three-s-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 18px;
+}
+
+
+.three-s-title > span {
+
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius:
+        13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #4b938d
+        );
+
+    color:
+        white;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 6px 15px
+        rgba(37, 107, 104, 0.18);
+}
+
+
+.three-s-title h3 {
+
+    color:
+        var(--primary-dark);
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+}
+
+
+.three-s-title p {
+
+    margin-top: 1px;
+
+    color:
+        var(--text-light);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   05. QUESTION
+========================================================= */
+
+.three-s-card > p {
+
+    position: relative;
+
+    z-index: 2;
+
+    color:
+        var(--text-secondary);
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    margin-bottom: 11px;
+}
+
+
+/* =========================================================
+   06. CHECKBOX / RADIO 3S
+========================================================= */
+
+.three-s-card .checkbox-item,
+.three-s-card .radio-item {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin:
+        6px 0 !important;
+
+    padding:
+        11px 13px;
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(255, 255, 255, 0.75);
+
+    color:
+        var(--text-secondary) !important;
+
+    font-size: 12px !important;
+
+    font-weight: 500 !important;
+
+    transition:
+        0.2s ease;
+}
+
+
+.three-s-card .checkbox-item:hover,
+.three-s-card .radio-item:hover {
+
+    background:
+        var(--primary-light);
+
+    border-color:
+        rgba(37, 107, 104, 0.10);
+
+    color:
+        var(--primary-dark) !important;
+
+    transform:
+        translateX(3px);
+}
+
+
+.three-s-card input {
+
+    accent-color:
+        var(--primary);
+}
+
+
+/* =========================================================
+   07. THINK TEXTAREA
+========================================================= */
+
+.three-s-card textarea {
+
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 125px;
+
+    margin-top: 5px;
+
+    background:
+        #ffffff;
+}
+
+
+/* =========================================================
+   08. 3S VISUAL FLOW
+========================================================= */
+
+/*
+    Tạo đường dẫn dọc giữa các bước.
+    Không ảnh hưởng đến nội dung,
+    chỉ tạo cảm giác STOP → THINK → SELECT.
+*/
+
+.journal-step#step-3 .three-s-card {
+
+    margin-left: 24px;
+}
+
+
+.journal-step#step-3 .three-s-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 2px;
+
+    left: -17px;
+
+    top: -18px;
+
+    bottom: -18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(37, 107, 104, 0.12),
+            rgba(242, 184, 75, 0.20)
+        );
+
+    z-index: 0;
+}
+
+
+/* điểm trên đường */
+
+.journal-step#step-3
+.three-s-card:nth-of-type(1)::before {
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(37, 107, 104, 0.18)
+        );
+}
+
+
+/* =========================================================
+   09. MÀU RIÊNG CHO TỪNG BƯỚC
+========================================================= */
+
+/* STOP */
+
+.journal-step#step-3
+.three-s-card:nth-of-type(1)
+.three-s-title > span {
+
+    background:
+        linear-gradient(
+            135deg,
+            #d48b62,
+            #e3a47d
+        );
+
+    box-shadow:
+        0 6px 15px
+        rgba(212, 139, 98, 0.18);
+}
+
+
+.journal-step#step-3
+.three-s-card:nth-of-type(1) {
+
+    border-left:
+        3px solid
+        #d48b62;
+}
+
+
+/* THINK */
+
+.journal-step#step-3
+.three-s-card:nth-of-type(2)
+.three-s-title > span {
+
+    background:
+        linear-gradient(
+            135deg,
+            #668db6,
+            #85a8c9
+        );
+
+    box-shadow:
+        0 6px 15px
+        rgba(102, 141, 182, 0.18);
+}
+
+
+.journal-step#step-3
+.three-s-card:nth-of-type(2) {
+
+    border-left:
+        3px solid
+        #668db6;
+}
+
+
+/* SELECT */
+
+.journal-step#step-3
+.three-s-card:nth-of-type(3)
+.three-s-title > span {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #4b938d
+        );
+}
+
+
+.journal-step#step-3
+.three-s-card:nth-of-type(3) {
+
+    border-left:
+        3px solid
+        var(--primary);
+}
+
+
+/* =========================================================
+   10. 3S LABEL
+========================================================= */
+
+.journal-step#step-3
+.three-s-card:nth-of-type(1)
+.three-s-title h3 {
+
+    color:
+        #b66f4d;
+}
+
+
+.journal-step#step-3
+.three-s-card:nth-of-type(2)
+.three-s-title h3 {
+
+    color:
+        #52789e;
+}
+
+
+.journal-step#step-3
+.three-s-card:nth-of-type(3)
+.three-s-title h3 {
+
+    color:
+        var(--primary-dark);
+}
+
+
+/* =========================================================
+   11. RESPONSIVE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .journal-step#step-3
+    .three-s-card {
+
+        margin-left: 10px;
+    }
+
+
+    .journal-step#step-3
+    .three-s-card::before {
+
+        left: -8px;
+    }
+
+
+    .three-s-card {
+
+        padding:
+            19px;
+    }
+
+
+    .three-s-title > span {
+
+        width: 39px;
+        height: 39px;
+    }
+}
+
+/* =========================================================
+   2.7 - CSS TRANG XEM LẠI
+   History + Progress + Teacher Feedback
+========================================================= */
+
+
+/* =========================================================
+   01. REVIEW HEADER
+========================================================= */
+
+.review-header {
+    margin-bottom: 25px;
+}
+
+
+.review-header h1 {
+    margin-bottom: 5px;
+}
+
+
+.review-header p {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   02. REVIEW TABS
+========================================================= */
+
+.review-tabs {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 5px;
+
+    width: fit-content;
+
+    margin-bottom: 25px;
+
+    background:
+        #eaf1ef;
+
+    border-radius:
+        13px;
+
+    border:
+        1px solid
+        #e0e9e6;
+}
+
+
+.review-tab {
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    padding:
+        10px 16px;
+
+    border-radius:
+        9px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.review-tab:hover {
+    color: var(--primary);
+}
+
+
+.review-tab.active {
+
+    background:
+        white;
+
+    color:
+        var(--primary-dark);
+
+    font-weight: 800;
+
+    box-shadow:
+        0 3px 10px
+        rgba(35, 68, 67, 0.08);
+}
+
+
+/* =========================================================
+   03. REVIEW CONTENT
+========================================================= */
+
+.review-content {
+    display: none;
+
+    padding:
+        28px;
+
+    animation:
+        reviewEnter 0.3s ease;
+}
+
+
+.review-content.active {
+    display: block;
+}
+
+
+@keyframes reviewEnter {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(7px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   04. HISTORY CARD
+========================================================= */
+
+.journal-history-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding:
+        18px;
+
+    margin-bottom: 12px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        16px;
+
+    background:
+        #ffffff;
+
+    transition:
+        0.25s ease;
+}
+
+
+.journal-history-card:hover {
+
+    transform:
+        translateX(4px);
+
+    border-color:
+        rgba(37, 107, 104, 0.16);
+
+    box-shadow:
+        var(--shadow-sm);
+}
+
+
+/* ngày */
+
+.history-date {
+
+    width: 58px;
+    height: 62px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius:
+        14px;
+
+    background:
+        var(--primary-light);
+
+    color:
+        var(--primary-dark);
+}
+
+
+.history-date strong {
+
+    font-size: 21px;
+
+    line-height: 1;
+
+    font-weight: 800;
+}
+
+
+.history-date span {
+
+    margin-top: 5px;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* nội dung */
+
+.history-info {
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.history-info h3 {
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    margin-bottom: 3px;
+}
+
+
+.history-info p {
+
+    color:
+        var(--text-secondary);
+
+    font-size: 11px;
+
+    margin-bottom: 8px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.history-meta {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    color:
+        var(--text-light);
+
+    font-size: 9px;
+
+    font-weight: 600;
+}
+
+
+.history-meta span:last-child {
+
+    color:
+        var(--success);
+}
+
+
+/* nút xem */
+
+.view-btn {
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        white;
+
+    color:
+        var(--primary);
+
+    padding:
+        8px 13px;
+
+    border-radius:
+        9px;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.view-btn:hover {
+
+    background:
+        var(--primary-light);
+
+    border-color:
+        var(--primary);
+
+    transform:
+        translateX(2px);
+}
+
+
+/* =========================================================
+   05. PROGRESS STATS
+========================================================= */
+
+.progress-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+.progress-card {
+
+    padding:
+        18px;
+
+    text-align: center;
+
+    transition:
+        0.2s ease;
+}
+
+
+.progress-card:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        var(--shadow-md);
+}
+
+
+.progress-icon {
+
+    display: block;
+
+    font-size: 22px;
+
+    margin-bottom: 7px;
+}
+
+
+.progress-card strong {
+
+    display: block;
+
+    color:
+        var(--primary-dark);
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+}
+
+
+.progress-card p {
+
+    margin-top: 4px;
+
+    color:
+        var(--text-light);
+
+    font-size: 9px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   06. PROGRESS CHART
+========================================================= */
+
+.progress-chart-card {
+
+    padding:
+        24px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        17px;
+}
+
+
+.progress-chart-card h3 {
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    margin-bottom: 3px;
+}
+
+
+.progress-chart-card > p {
+
+    color:
+        var(--text-light);
+
+    font-size: 10px;
+
+    margin-bottom: 22px;
+}
+
+
+/* từng dòng */
+
+.progress-row {
+
+    display: grid;
+
+    grid-template-columns:
+        55px 1fr 40px;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+
+.progress-row > span {
+
+    color:
+        var(--text-secondary);
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.progress-row > strong {
+
+    color:
+        var(--primary);
+
+    font-size: 10px;
+
+    text-align: right;
+}
+
+
+/* thanh */
+
+.progress-bar {
+
+    height: 8px;
+
+    overflow: hidden;
+
+    border-radius:
+        20px;
+
+    background:
+        #edf2f0;
+}
+
+
+/* phần đã hoàn thành */
+
+.progress-fill {
+
+    height: 100%;
+
+    border-radius:
+        inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            #68a59e
+        );
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* hiệu ứng ánh sáng */
+
+.progress-fill::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 40px;
+    height: 100%;
+
+    top: 0;
+    left: -50px;
+
+    background:
+        rgba(255,255,255,0.25);
+
+    transform:
+        skewX(-20deg);
+
+    animation:
+        progressShine 2.5s infinite;
+}
+
+
+@keyframes progressShine {
+
+    0% {
+        left: -50px;
+    }
+
+    60% {
+        left: 110%;
+    }
+
+    100% {
+        left: 110%;
+    }
+}
+
+
+/* =========================================================
+   07. FEEDBACK CARD
+========================================================= */
+
+.feedback-card {
+
+    padding:
+        20px;
+
+    margin-bottom: 13px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.feedback-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 4px;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    background:
+        var(--secondary);
+}
+
+
+/* header */
+
+.feedback-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 15px;
+}
+
+
+.teacher-avatar {
+
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        var(--primary-light);
+
+    color:
+        var(--primary);
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+.feedback-header h3 {
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+.feedback-header span {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color:
+        var(--text-light);
+
+    font-size: 9px;
+}
+
+
+/* nội dung */
+
+.feedback-content {
+
+    padding:
+        15px;
+
+    border-radius:
+        11px;
+
+    background:
+        #f8faf9;
+}
+
+
+.feedback-content p {
+
+    color:
+        var(--text-secondary);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   08. REVIEW RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .progress-stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .review-tabs {
+
+        width: 100%;
+
+        overflow-x: auto;
+    }
+
+
+    .review-tab {
+
+        white-space: nowrap;
+
+        padding:
+            9px 12px;
+    }
+
+
+    .review-content {
+
+        padding:
+            20px 15px;
+    }
+
+
+    .journal-history-card {
+
+        align-items:
+            flex-start;
+    }
+
+
+    .view-btn {
+
+        margin-left: auto;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .journal-history-card {
+
+        flex-wrap: wrap;
+    }
+
+
+    .history-info {
+
+        width:
+            calc(100% - 76px);
+    }
+
+
+    .view-btn {
+
+        width: 100%;
+
+        margin-top: 3px;
+    }
+
+
+    .progress-stats {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 8px;
+    }
+
+
+    .progress-card {
+
+        padding:
+            14px 8px;
+    }
+
+
+    .progress-row {
+
+        grid-template-columns:
+            48px 1fr 35px;
+
+        gap: 8px;
+    }
+}
+
+/* =========================================================
+   2.8 - CSS GIAO DIỆN GIÁO VIÊN
+========================================================= */
+
+
+/* =========================================================
+   01. TEACHER HEADER
+========================================================= */
+
+.teacher-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        28px 30px;
+
+    margin-bottom: 22px;
+
+    border-radius:
+        22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f0f7f5
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    box-shadow:
+        var(--shadow-md);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.teacher-header::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    right: -70px;
+    top: -80px;
+
+    background:
+        rgba(37, 107, 104, 0.06);
+}
+
+
+.teacher-header > div {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.teacher-header h1 {
+
+    margin-bottom: 5px;
+}
+
+
+.teacher-header p {
+
+    color:
+        var(--text-secondary);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   02. TEACHER STATISTICS
+========================================================= */
+
+.teacher-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 30px;
+}
+
+
+.teacher-stat-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-height: 92px;
+
+    padding:
+        17px 19px;
+
+    background:
+        white;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        16px;
+
+    box-shadow:
+        var(--shadow-sm);
+
+    transition:
+        0.2s ease;
+}
+
+
+.teacher-stat-card:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        var(--shadow-md);
+}
+
+
+.teacher-stat-icon {
+
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius:
+        13px;
+
+    background:
+        var(--primary-light);
+
+    font-size: 20px;
+}
+
+
+.teacher-stat-card:nth-child(2)
+.teacher-stat-icon {
+
+    background:
+        var(--blue-light);
+}
+
+
+.teacher-stat-card:nth-child(3)
+.teacher-stat-icon {
+
+    background:
+        var(--secondary-light);
+}
+
+
+.teacher-stat-card strong {
+
+    display: block;
+
+    color:
+        var(--text-main);
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+}
+
+
+.teacher-stat-card span:last-child {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color:
+        var(--text-light);
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   03. JOURNAL SECTION
+========================================================= */
+
+.teacher-journal-section {
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   04. TEACHER JOURNAL CARD
+========================================================= */
+
+.teacher-journal-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.teacher-journal-card {
+
+    display: grid;
+
+    grid-template-columns:
+        1.4fr
+        1fr
+        0.8fr
+        auto;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding:
+        15px 18px;
+
+    transition:
+        0.2s ease;
+}
+
+
+.teacher-journal-card:hover {
+
+    border-color:
+        rgba(37, 107, 104, 0.18);
+
+    box-shadow:
+        var(--shadow-md);
+
+    transform:
+        translateX(3px);
+}
+
+
+/* =========================================================
+   05. STUDENT INFO
+========================================================= */
+
+.student-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+.student-avatar {
+
+    width: 39px;
+    height: 39px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius:
+        12px;
+
+    background:
+        var(--primary-light);
+
+    color:
+        var(--primary-dark);
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+.student-info h3 {
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+.student-info span {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color:
+        var(--text-light);
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   06. SITUATION INFO
+========================================================= */
+
+.situation-info span {
+
+    display: block;
+
+    margin-bottom: 2px;
+
+    color:
+        var(--text-light);
+
+    font-size: 8px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.7px;
+
+    font-weight: 700;
+}
+
+
+.situation-info strong {
+
+    color:
+        var(--text-main);
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   07. 3S STATUS
+========================================================= */
+
+.three-s-status > span {
+
+    display: block;
+
+    color:
+        var(--text-light);
+
+    font-size: 8px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.7px;
+
+    font-weight: 700;
+
+    margin-bottom: 2px;
+}
+
+
+.three-s-status strong {
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+.three-s-status .complete {
+
+    color:
+        var(--success);
+}
+
+
+.three-s-status .incomplete {
+
+    color:
+        #c48a36;
+}
+
+
+/* =========================================================
+   08. VIEW BUTTON
+========================================================= */
+
+.teacher-view-btn {
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        white;
+
+    color:
+        var(--primary);
+
+    padding:
+        8px 14px;
+
+    border-radius:
+        9px;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.teacher-view-btn:hover {
+
+    background:
+        var(--primary-light);
+
+    border-color:
+        var(--primary);
+
+    transform:
+        translateX(2px);
+}
+
+
+/* =========================================================
+   09. TEACHER DETAIL
+========================================================= */
+
+.teacher-detail {
+
+    padding:
+        28px;
+
+    margin-top: 28px;
+
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        22px;
+
+    box-shadow:
+        var(--shadow-md);
+}
+
+
+.teacher-detail .section-title {
+
+    padding-bottom:
+        17px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    margin-bottom:
+        18px;
+}
+
+
+/* =========================================================
+   10. DETAIL CARD
+========================================================= */
+
+.detail-card {
+
+    padding:
+        18px;
+
+    margin-bottom:
+        12px;
+
+    background:
+        #fbfcfc;
+
+    box-shadow:
+        none;
+
+    border:
+        1px solid
+        #e8eeec;
+
+    border-radius:
+        15px;
+}
+
+
+.detail-card h3 {
+
+    color:
+        var(--text-main);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    margin-bottom:
+        9px;
+}
+
+
+.detail-card p {
+
+    color:
+        var(--text-secondary);
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   11. EMOTION RESULT
+========================================================= */
+
+.emotion-result {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        8px 12px;
+
+    margin-bottom:
+        10px;
+
+    border-radius:
+        10px;
+
+    background:
+        var(--danger-light);
+
+    color:
+        #a85a5a;
+
+    font-size: 12px;
+}
+
+
+.emotion-result strong {
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   12. TEACHER 3S
+========================================================= */
+
+.teacher-three-s {
+
+    padding:
+        14px 15px;
+
+    margin:
+        8px 0;
+
+    border-left:
+        3px solid
+        var(--primary);
+
+    border-radius:
+        0 10px 10px 0;
+
+    background:
+        white;
+}
+
+
+.teacher-s-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom:
+        6px;
+}
+
+
+.teacher-s-title strong {
+
+    color:
+        var(--primary-dark);
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+
+.teacher-s-title span {
+
+    color:
+        var(--text-light);
+
+    font-size: 9px;
+}
+
+
+.teacher-three-s p {
+
+    font-size: 11px;
+
+    color:
+        var(--text-secondary);
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   13. SATISFACTION
+========================================================= */
+
+.satisfaction {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top:
+        12px;
+
+    padding:
+        7px 11px;
+
+    border-radius:
+        9px;
+
+    background:
+        var(--secondary-light);
+
+    color:
+        #a27428;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.satisfaction strong {
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   14. TEACHER FEEDBACK
+========================================================= */
+
+.teacher-feedback {
+
+    margin-top:
+        18px;
+
+    padding:
+        22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f8fbfa,
+            #eef7f5
+        );
+
+    border:
+        1px solid
+        rgba(37, 107, 104, 0.12);
+}
+
+
+.teacher-feedback h3 {
+
+    color:
+        var(--primary-dark);
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    margin-bottom:
+        12px;
+}
+
+
+.teacher-feedback textarea {
+
+    width: 100%;
+
+    min-height:
+        120px;
+
+    resize: vertical;
+
+    padding:
+        14px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        12px;
+
+    background:
+        white;
+
+    color:
+        var(--text-main);
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    outline: none;
+
+    transition:
+        0.2s ease;
+
+    margin-bottom:
+        12px;
+}
+
+
+.teacher-feedback textarea:focus {
+
+    border-color:
+        var(--primary);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(37, 107, 104, 0.08);
+}
+
+
+.teacher-feedback .primary-btn {
+
+    min-width:
+        125px;
+}
+
+
+/* =========================================================
+   15. TEACHER RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .teacher-stats {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+
+    .teacher-journal-card {
+
+        grid-template-columns:
+            1.2fr
+            1fr
+            auto;
+    }
+
+
+    .three-s-status {
+
+        display: none;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .teacher-header {
+
+        padding:
+            23px;
+    }
+
+
+    .teacher-stats {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .teacher-journal-card {
+
+        grid-template-columns:
+            1fr auto;
+
+        gap: 12px;
+    }
+
+
+    .situation-info {
+
+        grid-column:
+            1 / 2;
+    }
+
+
+    .teacher-view-btn {
+
+        grid-column:
+            2 / 3;
+
+        grid-row:
+            1 / 3;
+    }
+
+
+    .teacher-detail {
+
+        padding:
+            20px 15px;
+    }
+}
+
+/* =========================================================
+   2.9 - STATUS / NOTIFICATION / MODAL
+========================================================= */
+
+
+/* =========================================================
+   01. SUCCESS MESSAGE
+========================================================= */
+
+.success-message {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        12px 15px;
+
+    margin-bottom:
+        18px;
+
+    border:
+        1px solid
+        rgba(76, 155, 115, 0.18);
+
+    border-radius:
+        12px;
+
+    background:
+        var(--success-light);
+
+    color:
+        #397957;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    animation:
+        messageIn 0.3s ease;
+}
+
+
+.success-message::before {
+
+    content: "✓";
+
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        var(--success);
+
+    color: white;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   02. WARNING MESSAGE
+========================================================= */
+
+.warning-message {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        12px 15px;
+
+    margin-bottom:
+        18px;
+
+    border:
+        1px solid
+        rgba(196, 138, 54, 0.18);
+
+    border-radius:
+        12px;
+
+    background:
+        var(--secondary-light);
+
+    color:
+        #9a702d;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+.warning-message::before {
+
+    content: "!";
+    
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        var(--secondary);
+
+    color: white;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   03. TOAST NOTIFICATION
+========================================================= */
+
+.toast {
+
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 9999;
+
+    min-width: 260px;
+
+    max-width: 360px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding:
+        14px 16px;
+
+    border-radius:
+        14px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid
+        var(--border);
+
+    box-shadow:
+        var(--shadow-lg);
+
+    color:
+        var(--text-main);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    animation:
+        toastIn 0.3s ease;
+}
+
+
+.toast-icon {
+
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background:
+        var(--success-light);
+
+    color:
+        var(--success);
+
+    font-weight: 800;
+}
+
+
+.toast.hide {
+
+    animation:
+        toastOut 0.25s ease forwards;
+}
+
+
+@keyframes toastIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes toastOut {
+
+    from {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform:
+            translateY(15px);
+    }
+}
+
+
+@keyframes messageIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   04. MODAL OVERLAY
+========================================================= */
+
+.modal-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(24, 45, 44, 0.38);
+
+    backdrop-filter:
+        blur(5px);
+
+    animation:
+        overlayIn 0.2s ease;
+}
+
+
+.modal-overlay.active {
+
+    display: flex;
+}
+
+
+@keyframes overlayIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   05. MODAL
+========================================================= */
+
+.modal {
+
+    width: 100%;
+
+    max-width: 680px;
+
+    max-height:
+        calc(100vh - 40px);
+
+    overflow-y: auto;
+
+    padding:
+        28px;
+
+    border-radius:
+        22px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid
+        var(--border);
+
+    box-shadow:
+        0 25px 70px
+        rgba(24, 45, 44, 0.18);
+
+    animation:
+        modalIn 0.25s ease;
+}
+
+
+@keyframes modalIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(12px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   06. MODAL HEADER
+========================================================= */
+
+.modal-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-bottom:
+        16px;
+
+    margin-bottom:
+        18px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+}
+
+
+.modal-header h2 {
+
+    color:
+        var(--text-main);
+
+    font-size: 19px;
+
+    font-weight: 800;
+}
+
+
+.modal-header p {
+
+    margin-top: 3px;
+
+    color:
+        var(--text-light);
+
+    font-size: 10px;
+}
+
+
+.modal-close {
+
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        9px;
+
+    background:
+        white;
+
+    color:
+        var(--text-secondary);
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.modal-close:hover {
+
+    background:
+        var(--danger-light);
+
+    color:
+        var(--danger);
+
+    border-color:
+        rgba(216, 107, 107, 0.2);
+}
+
+
+/* =========================================================
+   07. MODAL BODY
+========================================================= */
+
+.modal-body {
+
+    color:
+        var(--text-secondary);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+.modal-section {
+
+    padding:
+        15px;
+
+    margin-bottom:
+        10px;
+
+    border-radius:
+        13px;
+
+    background:
+        #f8faf9;
+
+    border:
+        1px solid
+        #e9efed;
+}
+
+
+.modal-section h3 {
+
+    color:
+        var(--text-main);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    margin-bottom:
+        7px;
+}
+
+
+/* =========================================================
+   08. MODAL FOOTER
+========================================================= */
+
+.modal-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 9px;
+
+    padding-top:
+        18px;
+
+    margin-top:
+        18px;
+
+    border-top:
+        1px solid
+        var(--border);
+}
+
+
+/* =========================================================
+   09. EMPTY STATE
+========================================================= */
+
+.empty-state {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height:
+        240px;
+
+    padding:
+        30px;
+
+    text-align: center;
+
+    border:
+        1px dashed
+        #d9e4e1;
+
+    border-radius:
+        17px;
+
+    background:
+        rgba(255, 255, 255, 0.55);
+}
+
+
+.empty-state-icon {
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom:
+        12px;
+
+    border-radius:
+        18px;
+
+    background:
+        var(--primary-light);
+
+    font-size: 25px;
+}
+
+
+.empty-state h3 {
+
+    color:
+        var(--text-main);
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    margin-bottom:
+        4px;
+}
+
+
+.empty-state p {
+
+    max-width:
+        330px;
+
+    color:
+        var(--text-light);
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   10. LOADING
+========================================================= */
+
+.loading {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    padding:
+        30px;
+
+    color:
+        var(--text-light);
+
+    font-size: 11px;
+}
+
+
+.loading-dot {
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background:
+        var(--primary);
+
+    animation:
+        loadingBounce 1s infinite;
+}
+
+
+.loading-dot:nth-child(2) {
+    animation-delay:
+        0.15s;
+}
+
+
+.loading-dot:nth-child(3) {
+    animation-delay:
+        0.3s;
+}
+
+
+@keyframes loadingBounce {
+
+    0%,
+    70%,
+    100% {
+        transform:
+            translateY(0);
+
+        opacity: 0.45;
+    }
+
+    35% {
+        transform:
+            translateY(-5px);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   11. MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .toast {
+
+        right: 15px;
+        left: 15px;
+
+        bottom: 15px;
+
+        min-width: auto;
+    }
+
+
+    .modal {
+
+        padding:
+            22px;
+
+        border-radius:
+            18px;
+    }
+
+
+    .modal-footer {
+
+        flex-direction:
+            column-reverse;
+    }
+
+
+    .modal-footer button {
+
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   A3 — TRANG CHỦ B.E.H.A.V
+   STYLE DIRECTION:
+   - Xanh B.E.H.A.V
+   - Trắng / xanh pastel
+   - Card mềm
+   - Hero hiện đại
+   - Học sinh thân thiện
+   - Không quá màu mè
+========================================================= */
+
+
+/* =========================================================
+   A3.1 — BIẾN MÀU RIÊNG CHO TRANG CHỦ
+========================================================= */
+
+:root {
+
+    --home-primary: #1469c7;
+
+    --home-primary-dark: #0d4385;
+
+    --home-primary-light: #eaf4ff;
+
+    --home-green: #55b88d;
+
+    --home-green-light: #eaf8f2;
+
+    --home-orange: #f3a84b;
+
+    --home-orange-light: #fff4e6;
+
+    --home-purple: #8064d9;
+
+    --home-purple-light: #f2efff;
+
+    --home-red: #ef6b75;
+
+    --home-text: #172d4f;
+
+    --home-text-soft: #53647c;
+
+    --home-muted: #8a98aa;
+
+    --home-border: #e3ebf3;
+
+    --home-bg: #f7fbff;
+
+    --home-white: #ffffff;
+
+    --home-shadow:
+        0 12px 35px
+        rgba(29, 75, 118, .08);
+
+    --home-shadow-hover:
+        0 18px 42px
+        rgba(29, 75, 118, .13);
+
+}
+
+
+/* =========================================================
+   A3.2 — PAGE
+========================================================= */
+
+.home-page {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 26px 30px 45px;
+
+    background:
+
+        radial-gradient(
+            circle at 92% 3%,
+            rgba(99, 180, 236, .10),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 3% 75%,
+            rgba(93, 194, 158, .07),
+            transparent 25%
+        ),
+
+        var(--home-bg);
+
+    color: var(--home-text);
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   A3.3 — HERO
+========================================================= */
+
+.home-hero {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(380px, .9fr);
+
+    gap: 35px;
+
+    align-items: center;
+
+    min-height: 455px;
+
+    padding:
+        45px 48px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(104, 166, 211, .18);
+
+    border-radius: 30px;
+
+    background:
+
+        linear-gradient(
+            120deg,
+            #eaf7ff 0%,
+            #f8fcff 53%,
+            #edf8f4 100%
+        );
+
+    box-shadow:
+        var(--home-shadow);
+
+}
+
+
+/* Các mảng trang trí */
+
+.home-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+
+    height: 300px;
+
+    right: -130px;
+
+    top: -140px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(83, 160, 222, .11);
+
+}
+
+
+.home-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 230px;
+
+    height: 230px;
+
+    left: -130px;
+
+    bottom: -140px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(83, 190, 153, .09);
+
+}
+
+
+/* =========================================================
+   FIX — HERO TRANG CHỦ CĂN GIỮA
+========================================================= */
+.home-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+.home-hero-text {
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.home-hero-text h1 {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-hero-text p {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-hero-actions {
+    justify-content: center;
+}
+
+/* =========================================================
+   A3.4 — HERO TEXT
+========================================================= */
+
+.home-hero-text {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 620px;
+
+}
+
+
+.home-label {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-bottom: 12px;
+
+    color:
+        var(--home-primary);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.home-hero-text h1 {
+
+    margin:
+        0 0 20px;
+
+    color:
+        var(--home-text);
+
+    font-size:
+        clamp(34px, 4vw, 56px);
+
+    line-height: 1.08;
+
+    font-weight: 900;
+
+    letter-spacing: -1.8px;
+
+}
+
+
+.home-hero-text h1::selection {
+
+    background:
+        #b9ddff;
+
+}
+
+
+.home-hero-text p {
+
+    max-width: 620px;
+
+    margin:
+        0 0 26px;
+
+    color:
+        var(--home-text-soft);
+
+    font-size: 13px;
+
+    line-height: 1.85;
+
+}
+
+
+/* =========================================================
+   A3.5 — HERO BUTTONS
+========================================================= */
+
+.home-hero-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.home-hero-actions .primary-btn,
+.home-cta .primary-btn {
+
+    min-height: 43px;
+
+    padding:
+        0 20px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1675d8,
+            #125caf
+        );
+
+    color:
+        white;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 18px
+        rgba(20, 105, 199, .22);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        filter .2s ease;
+
+}
+
+
+.home-hero-actions .primary-btn:hover,
+.home-cta .primary-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 11px 24px
+        rgba(20, 105, 199, .28);
+
+    filter:
+        brightness(1.03);
+
+}
+
+
+.home-hero-actions .secondary-btn {
+
+    min-height: 43px;
+
+    padding:
+        0 18px;
+
+    border:
+        1px solid
+        #d5e3ef;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.78);
+
+    color:
+        var(--home-primary-dark);
+
+    font-size: 11px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        .2s ease;
+
+}
+
+
+.home-hero-actions .secondary-btn:hover {
+
+    background:
+        white;
+
+    border-color:
+        #b9d3e8;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   A3.6 — HERO IMAGE
+========================================================= */
+
+.home-hero-image {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 0;
+
+}
+
+
+.home-hero-image::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+
+    height: 360px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.55);
+
+    filter:
+        blur(1px);
+
+}
+
+
+.home-hero-image img {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 570px;
+
+    height: auto;
+
+    border-radius: 24px;
+
+    object-fit: cover;
+
+    box-shadow:
+        0 18px 40px
+        rgba(27, 69, 107, .13);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+}
+
+
+.home-hero-image img:hover {
+
+    transform:
+        translateY(-5px)
+        rotate(.25deg);
+
+    box-shadow:
+        0 24px 48px
+        rgba(27, 69, 107, .18);
+
+}
+
+
+/* =========================================================
+   A3.7 — STORY
+========================================================= */
+
+.home-story {
+
+    position: relative;
+
+    max-width: 1120px;
+
+    margin:
+        25px auto 0;
+
+    padding:
+        38px 42px;
+
+    border:
+        1px solid
+        var(--home-border);
+
+    border-radius: 25px;
+
+    background:
+        var(--home-white);
+
+    box-shadow:
+        var(--home-shadow);
+
+}
+
+
+.home-story-heading {
+
+    margin-bottom: 18px;
+
+}
+
+
+.home-story-heading h2 {
+
+    margin: 0;
+
+    color:
+        var(--home-text);
+
+    font-size: 25px;
+
+    line-height: 1.25;
+
+    font-weight: 850;
+
+}
+
+
+.home-story-content {
+
+    max-width: 980px;
+
+}
+
+
+.home-story-content p {
+
+    margin:
+        0 0 11px;
+
+    color:
+        var(--home-text-soft);
+
+    font-size: 12px;
+
+    line-height: 1.85;
+
+}
+
+
+.home-story-content p:last-child {
+
+    margin-bottom: 0;
+
+}
+
+
+.home-story-content strong {
+
+    color:
+        var(--home-primary-dark);
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================================
+   A3.8 — 3 VALUE CARDS
+========================================================= */
+
+.home-values {
+
+    max-width: 1120px;
+
+    margin:
+        20px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
+
+}
+
+
+.home-value-card {
+
+    position: relative;
+
+    padding:
+        25px 24px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--home-border);
+
+    border-radius: 21px;
+
+    background:
+        rgba(255,255,255,.92);
+
+    box-shadow:
+        0 8px 24px
+        rgba(29,75,118,.05);
+
+    transition:
+        transform .22s ease,
+        box-shadow .22s ease;
+
+}
+
+
+.home-value-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 90px;
+
+    height: 90px;
+
+    right: -40px;
+
+    top: -40px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(60, 147, 218, .06);
+
+}
+
+
+.home-value-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        var(--home-shadow-hover);
+
+}
+
+
+.home-value-card:nth-child(2)::after {
+
+    background:
+        rgba(82, 184, 141, .07);
+
+}
+
+
+.home-value-card:nth-child(3)::after {
+
+    background:
+        rgba(128, 100, 217, .07);
+
+}
+
+
+/* =========================================================
+   A3.9 — VALUE ICON
+========================================================= */
+
+.home-value-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    border-radius: 13px;
+
+    background:
+        var(--home-primary-light);
+
+    font-size: 20px;
+
+}
+
+
+.home-value-card:nth-child(2)
+.home-value-icon {
+
+    background:
+        var(--home-green-light);
+
+}
+
+
+.home-value-card:nth-child(3)
+.home-value-icon {
+
+    background:
+        var(--home-purple-light);
+
+}
+
+
+.home-value-card h3 {
+
+    margin:
+        0 0 7px;
+
+    color:
+        var(--home-text);
+
+    font-size: 14px;
+
+    font-weight: 850;
+
+}
+
+
+.home-value-card p {
+
+    margin: 0;
+
+    color:
+        var(--home-text-soft);
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   A3.10 — DAILY SECTION
+========================================================= */
+
+.home-daily {
+
+    max-width: 1120px;
+
+    margin:
+        25px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        1.35fr .65fr;
+
+    gap: 15px;
+
+}
+
+
+.home-daily-text {
+
+    padding:
+        38px 40px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #123f76,
+            #196db7
+        );
+
+    box-shadow:
+        var(--home-shadow);
+
+}
+
+
+.home-daily-text .home-label {
+
+    color:
+        #b9dcff;
+
+}
+
+
+.home-daily-text h2 {
+
+    margin:
+        0 0 15px;
+
+    color:
+        white;
+
+    font-size: 27px;
+
+    line-height: 1.25;
+
+    font-weight: 850;
+
+}
+
+
+.home-daily-text p {
+
+    max-width: 750px;
+
+    margin:
+        0 0 10px;
+
+    color:
+        rgba(255,255,255,.78);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+}
+
+
+.home-daily-text p:last-child {
+
+    margin-bottom: 0;
+
+}
+
+
+/* =========================================================
+   A3.11 — QUOTE
+========================================================= */
+
+.home-daily-quote {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding:
+        35px;
+
+    border:
+        1px solid
+        var(--home-border);
+
+    border-radius: 25px;
+
+    background:
+        white;
+
+    box-shadow:
+        var(--home-shadow);
+
+}
+
+
+.quote-icon {
+
+    display: block;
+
+    height: 35px;
+
+    color:
+        var(--home-primary);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 70px;
+
+    line-height: .8;
+
+}
+
+
+.home-daily-quote p {
+
+    margin:
+        15px 0 14px;
+
+    color:
+        var(--home-text);
+
+    font-size: 16px;
+
+    line-height: 1.55;
+
+    font-weight: 800;
+
+}
+
+
+.quote-author {
+
+    color:
+        var(--home-muted);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   A3.12 — CTA
+========================================================= */
+
+/* =========================================================
+   TRANG CHỦ — CỤM NÚT ĐIỀU HƯỚNG
+========================================================= */
+
+.home-navigation {
+
+    max-width: 1120px;
+
+    margin: 28px auto 0;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3ebf3;
+
+    box-shadow:
+        0 12px 35px
+        rgba(29, 75, 118, .07);
+
+}
+
+
+.home-navigation-heading {
+
+    margin-bottom: 20px;
+
+}
+
+
+.home-navigation-heading > span {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #1469c7;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+
+}
+
+
+.home-navigation-heading h2 {
+
+    margin: 0;
+
+    color: #172d4f;
+
+    font-size: 22px;
+
+    font-weight: 850;
+
+}
+
+
+.home-navigation-buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.home-nav-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 75px;
+
+    padding: 13px 15px;
+
+    border: 1px solid #e3ebf3;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    color: #172d4f;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+
+}
+
+
+.home-nav-btn:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(29, 75, 118, .10);
+
+}
+
+
+.home-nav-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #eaf4ff;
+
+    font-size: 19px;
+
+}
+
+
+.review-btn .home-nav-icon {
+
+    background:
+        #eaf8f2;
+
+}
+
+
+.dashboard-btn .home-nav-icon {
+
+    background:
+        #f2efff;
+
+}
+
+
+.home-nav-btn > span:nth-child(2) {
+
+    min-width: 0;
+
+    flex: 1;
+
+}
+
+
+.home-nav-btn strong {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #172d4f;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+}
+
+
+.home-nav-btn small {
+
+    display: block;
+
+    color: #8a98aa;
+
+    font-size: 9px;
+
+}
+
+
+.home-nav-btn b {
+
+    color: #8da2b8;
+
+    font-size: 18px;
+
+    transition:
+        transform .2s ease;
+
+}
+
+
+.home-nav-btn:hover b {
+
+    transform:
+        translateX(3px);
+
+}
+
+
+.journal-btn:hover {
+
+    border-color:
+        #bcdcff;
+
+}
+
+
+.review-btn:hover {
+
+    border-color:
+        #bfe6d4;
+
+}
+
+
+.dashboard-btn:hover {
+
+    border-color:
+        #d4c9f4;
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 850px) {
+
+    .home-navigation-buttons {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+.home-cta-text .home-label {
+
+    margin-bottom: 5px;
+
+}
+
+
+.home-cta-text h2 {
+
+    margin:
+        0 0 4px;
+
+    color:
+        var(--home-text);
+
+    font-size: 20px;
+
+    font-weight: 850;
+
+}
+
+
+.home-cta-text p {
+
+    margin: 0;
+
+    color:
+        var(--home-text-soft);
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================================
+   A3.13 — FOOTER
+========================================================= */
+
+.home-footer {
+
+    max-width: 1120px;
+
+    margin:
+        22px auto 0;
+
+    padding:
+        15px 10px;
+
+    text-align: center;
+
+}
+
+
+.home-footer strong {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color:
+        var(--home-primary-dark);
+
+    font-size: 10px;
+
+    letter-spacing: 1.4px;
+
+}
+
+
+.home-footer p {
+
+    margin:
+        0 0 5px;
+
+    color:
+        var(--home-muted);
+
+    font-size: 10px;
+
+}
+
+
+.home-footer small {
+
+    color:
+        #a9b4c0;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   A3.14 — TRANG CHỦ ACTIVE
+========================================================= */
+
+/*
+   Nút Trang chủ trong sidebar.
+   Phần này giúp nó giống thiết kế bạn gửi:
+   nền xanh rất nhạt + chữ xanh + icon xanh.
+*/
+
+.sidebar .menu-item[data-page="home"] {
+
+    position: relative;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+
+}
+
+
+/* Khi đang ở Trang chủ */
+
+.sidebar .menu-item[data-page="home"].active {
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf4ff,
+            #f2f8ff
+        );
+
+    color:
+        var(--home-primary);
+
+    font-weight: 800;
+
+}
+
+
+/* Thanh nhỏ bên trái */
+
+.sidebar .menu-item[data-page="home"].active::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 50%;
+
+    width: 3px;
+
+    height: 24px;
+
+    transform:
+        translateY(-50%);
+
+    border-radius:
+        0 5px 5px 0;
+
+    background:
+        var(--home-primary);
+
+}
+
+
+/* Hover */
+
+.sidebar .menu-item[data-page="home"]:hover {
+
+    background:
+        #f1f7fc;
+
+    transform:
+        translateX(2px);
+
+}
+
+
+/* =========================================================
+   A3.15 — TẤT CẢ PAGE
+========================================================= */
+
+.main-content {
+
+    min-width: 0;
+
+}
+
+
+.page {
+
+    animation:
+        homePageIn .28s ease;
+
+}
+
+
+@keyframes homePageIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(5px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   A3.16 — NÚT TRANG CHỦ TRÊN HEADER
+========================================================= */
+
+/*
+   Nếu header có nút data-page="home",
+   nút này cũng dùng chung style.
+*/
+
+[data-page="home"] {
+
+    cursor: pointer;
+
+}
+
+
+button[data-page="home"] {
+
+    font-family:
+        inherit;
+
+}
+
+
+/* =========================================================
+   A3.17 — SCROLLBAR TRANG CHỦ
+========================================================= */
+
+.home-page::-webkit-scrollbar {
+
+    width: 7px;
+
+}
+
+
+.home-page::-webkit-scrollbar-track {
+
+    background:
+        transparent;
+
+}
+
+
+.home-page::-webkit-scrollbar-thumb {
+
+    border-radius: 10px;
+
+    background:
+        #c7dceb;
+
+}
+
+
+.home-page::-webkit-scrollbar-thumb:hover {
+
+    background:
+        #a8c6dd;
+
+}
+
+
+/* =========================================================
+   A3.18 — RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .home-page {
+
+        padding:
+            22px;
+
+    }
+
+
+    .home-hero {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 25px;
+
+        padding:
+            38px;
+
+    }
+
+
+    .home-hero-text {
+
+        max-width:
+            800px;
+
+    }
+
+
+    .home-hero-image {
+
+        max-width:
+            700px;
+
+        margin:
+            0 auto;
+
+    }
+
+
+    .home-values {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+}
+
+
+/* =========================================================
+   A3.19 — RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .home-page {
+
+        padding:
+            15px;
+
+    }
+
+
+    .home-hero {
+
+        min-height:
+            auto;
+
+        padding:
+            28px 24px;
+
+        border-radius:
+            22px;
+
+    }
+
+
+    .home-hero-text h1 {
+
+        font-size:
+            34px;
+
+        letter-spacing:
+            -1px;
+
+    }
+
+
+    .home-hero-text p {
+
+        font-size:
+            12px;
+
+    }
+
+
+    .home-hero-image {
+
+        margin-top:
+            5px;
+
+    }
+
+
+    .home-hero-image img {
+
+        border-radius:
+            18px;
+
+    }
+
+
+    .home-story {
+
+        padding:
+            28px 24px;
+
+        border-radius:
+            20px;
+
+    }
+
+
+    .home-story-heading h2 {
+
+        font-size:
+            21px;
+
+    }
+
+
+    .home-values {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .home-daily {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .home-daily-text {
+
+        padding:
+            30px 25px;
+
+    }
+
+
+    .home-daily-text h2 {
+
+        font-size:
+            23px;
+
+    }
+
+
+    .home-daily-quote {
+
+        min-height:
+            180px;
+
+    }
+
+
+    .home-cta {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        padding:
+            25px;
+
+    }
+
+
+    .home-cta .primary-btn {
+
+        width:
+            100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   A3.20 — MOBILE NHỎ
+========================================================= */
+
+@media (max-width: 430px) {
+
+    .home-page {
+
+        padding:
+            10px;
+
+    }
+
+
+    .home-hero {
+
+        padding:
+            24px 18px;
+
+    }
+
+
+    .home-hero-text h1 {
+
+        font-size:
+            29px;
+
+    }
+
+
+    .home-hero-actions {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+    }
+
+
+    .home-hero-actions button {
+
+        width:
+            100%;
+
+    }
+
+
+    .home-story {
+
+        padding:
+            24px 18px;
+
+    }
+
+
+    .home-daily-text {
+
+        padding:
+            26px 20px;
+
+    }
+
+
+    .home-daily-quote {
+
+        padding:
+            28px 22px;
+
+    }
+
+}
+
+
+/* =========================================================
+   A3.21 — ACCESSIBILITY
+========================================================= */
+
+.home-page button:focus-visible {
+
+    outline:
+        3px solid
+        rgba(20, 105, 199, .25);
+
+    outline-offset:
+        3px;
+
+}
+
+
+/* =========================================================
+   A3.22 — ẢNH KHÔNG BỊ VỠ
+========================================================= */
+
+.home-hero-image img {
+
+    max-height:
+        470px;
+
+    object-fit:
+        cover;
+
+}
+
+
+/* =========================================================
+   A3.23 — GIỮ HOME ĐẸP KHI SIDEBAR THU NHỎ
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .home-hero {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .home-values {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .home-daily {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+/* =========================================================
+   B1 — DASHBOARD HỌC SINH
+========================================================= */
+
+.dashboard-page {
+
+    max-width: 1180px;
+
+    margin: 0 auto;
+
+    padding: 28px;
+
+    color: #172d4f;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.dashboard-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 24px;
+
+}
+
+
+.dashboard-label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #1469c7;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+
+}
+
+
+.dashboard-header h1 {
+
+    margin: 0 0 6px;
+
+    font-size: 28px;
+
+    font-weight: 850;
+
+}
+
+
+.dashboard-header p {
+
+    margin: 0;
+
+    color: #718197;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+}
+
+
+.dashboard-date-box {
+
+    min-width: 175px;
+
+    padding: 15px 18px;
+
+    border: 1px solid #e1eaf2;
+
+    border-radius: 15px;
+
+    background: white;
+
+    box-shadow:
+        0 8px 22px
+        rgba(29,75,118,.05);
+
+}
+
+
+.dashboard-date-box span {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #8a98aa;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+}
+
+
+.dashboard-date-box strong {
+
+    color: #1469c7;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.dashboard-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 13px;
+
+    margin-bottom: 28px;
+
+}
+
+
+.dashboard-stat-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 18px;
+
+    border: 1px solid #e4ebf2;
+
+    border-radius: 17px;
+
+    background: white;
+
+    box-shadow:
+        0 7px 22px
+        rgba(29,75,118,.05);
+
+}
+
+
+.dashboard-stat-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 13px;
+
+    font-size: 20px;
+
+}
+
+
+.dashboard-stat-icon.blue {
+
+    background: #eaf4ff;
+
+}
+
+
+.dashboard-stat-icon.green {
+
+    background: #eaf8f2;
+
+}
+
+
+.dashboard-stat-icon.orange {
+
+    background: #fff4e6;
+
+}
+
+
+.dashboard-stat-card strong {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #172d4f;
+
+    font-size: 22px;
+
+    font-weight: 850;
+
+}
+
+
+.dashboard-stat-card span {
+
+    color: #8290a2;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================
+   SECTION HEADER
+========================= */
+
+.dashboard-section-header {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+}
+
+
+.dashboard-section-header span {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #8a98aa;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+}
+
+
+.dashboard-section-header h2 {
+
+    margin: 0;
+
+    color: #172d4f;
+
+    font-size: 19px;
+
+    font-weight: 850;
+
+}
+
+
+.dashboard-link {
+
+    border: none;
+
+    background: transparent;
+
+    color: #1469c7;
+
+    font-size: 10px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================
+   RECENT JOURNALS
+========================= */
+
+.recent-journals {
+
+    min-height: 130px;
+
+}
+
+
+.empty-journal {
+
+    padding: 32px;
+
+    text-align: center;
+
+    border: 1px dashed #d9e4ed;
+
+    border-radius: 18px;
+
+    background: white;
+
+}
+
+
+.empty-journal > div {
+
+    margin-bottom: 8px;
+
+    font-size: 27px;
+
+}
+
+
+.empty-journal h3 {
+
+    margin: 0 0 5px;
+
+    font-size: 14px;
+
+}
+
+
+.empty-journal p {
+
+    margin: 0 0 14px;
+
+    color: #8997a8;
+
+    font-size: 10px;
+
+}
+
+
+.empty-journal .primary-btn {
+
+    padding: 9px 15px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #1469c7;
+
+    color: white;
+
+    font-size: 10px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.dashboard-actions {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 13px;
+
+    margin-top: 20px;
+
+}
+
+
+.dashboard-action {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    min-height: 72px;
+
+    padding: 13px 16px;
+
+    border: 1px solid #e2eaf2;
+
+    border-radius: 16px;
+
+    background: white;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.dashboard-action:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(29,75,118,.09);
+
+}
+
+
+.dashboard-action > span {
+
+    width: 40px;
+
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #eaf4ff;
+
+    font-size: 18px;
+
+}
+
+
+.dashboard-action > div {
+
+    flex: 1;
+
+}
+
+
+.dashboard-action strong {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #172d4f;
+
+    font-size: 11px;
+
+}
+
+
+.dashboard-action small {
+
+    color: #8a98aa;
+
+    font-size: 9px;
+
+}
+
+
+.dashboard-action b {
+
+    color: #8da2b8;
+
+    font-size: 17px;
+
+}
+
+
+.primary-action {
+
+    border-color: #cce2f8;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f3f9ff,
+            #ffffff
+        );
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+
+    .dashboard-header {
+
+        flex-direction: column;
+
+    }
+
+
+    .dashboard-date-box {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+
+    .dashboard-stats {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .dashboard-actions {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .dashboard-page {
+
+        padding: 18px 14px;
+
+    }
+
+
+    .dashboard-header h1 {
+
+        font-size: 24px;
+
+    }
+
+}
+
+/* =========================================================
+   B3 — ĐỒNG HỒ DASHBOARD
+========================================================= */
+
+.dashboard-clock {
+
+    margin-top: 7px;
+
+    color: #1469c7;
+
+    font-size: 18px;
+
+    font-weight: 850;
+
+    line-height: 1;
+
+    letter-spacing: .5px;
+
+    font-variant-numeric:
+        tabular-nums;
+
+}
+
+
+/* Làm hộp ngày giờ nổi bật hơn */
+
+.dashboard-date-box {
+
+    min-width: 190px;
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    .dashboard-clock {
+
+        font-size: 16px;
+
+    }
+
+}
+
+/* =========================================================
+   B4 — NHẬT KÝ GẦN ĐÂY
+========================================================= */
+
+.recent-journal-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 62px;
+
+    margin-bottom: 9px;
+
+    padding: 10px 13px;
+
+    border: 1px solid #e3ebf3;
+
+    border-radius: 14px;
+
+    background: white;
+
+    box-shadow:
+        0 5px 16px
+        rgba(29,75,118,.04);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.recent-journal-item:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 9px 22px
+        rgba(29,75,118,.08);
+
+}
+
+
+.recent-journal-icon {
+
+    width: 38px;
+
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #eaf4ff;
+
+    font-size: 17px;
+
+}
+
+
+.recent-journal-info {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+.recent-journal-info strong {
+
+    display: block;
+
+    overflow: hidden;
+
+    margin-bottom: 3px;
+
+    color: #172d4f;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+.recent-journal-info small {
+
+    color: #8a98aa;
+
+    font-size: 9px;
+
+}
+
+
+.recent-journal-status {
+
+    flex-shrink: 0;
+
+    padding:
+        5px 8px;
+
+    border-radius: 8px;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+}
+
+
+.recent-journal-status.has-feedback {
+
+    background: #eaf8f2;
+
+    color: #2d9368;
+
+}
+
+
+.recent-journal-status.waiting-feedback {
+
+    background: #fff4e6;
+
+    color: #c47a25;
+
+}
+
+
+@media (max-width: 600px) {
+
+    .recent-journal-item {
+
+        align-items: flex-start;
+
+    }
+
+
+    .recent-journal-status {
+
+        display: none;
+
+    }
+
+}
+
+/* =========================================================
+   C1 — GIAO DIỆN VIẾT NHẬT KÝ
+========================================================= */
+
+.journal-page {
+
+    max-width: 1050px;
+
+    margin: 0 auto;
+
+    padding: 28px;
+
+    color: #172d4f;
+
+}
+
+
+/* HEADER */
+
+.journal-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.journal-label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #1469c7;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+
+}
+
+
+.journal-header h1 {
+
+    margin: 0 0 7px;
+
+    font-size: 28px;
+
+    font-weight: 850;
+
+}
+
+
+.journal-header p {
+
+    max-width: 600px;
+
+    margin: 0;
+
+    color: #718197;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+}
+
+
+.journal-step-counter {
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 4px;
+
+    padding: 12px 17px;
+
+    border: 1px solid #e1eaf2;
+
+    border-radius: 14px;
+
+    background: white;
+
+}
+
+
+.journal-step-counter span {
+
+    color: #8a98aa;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+}
+
+
+.journal-step-counter strong {
+
+    color: #1469c7;
+
+    font-size: 22px;
+
+}
+
+
+.journal-step-counter small {
+
+    color: #8a98aa;
+
+    font-size: 10px;
+
+}
+
+
+/* PROGRESS */
+
+.journal-progress {
+
+    margin-bottom: 27px;
+
+}
+
+
+.journal-progress-line {
+
+    height: 5px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: #e8eff5;
+
+}
+
+
+#journal-progress-fill {
+
+    width: 16.66%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: #1469c7;
+
+    transition: width .25s ease;
+
+}
+
+
+.journal-progress-steps {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: -12px;
+
+}
+
+
+.journal-progress-step {
+
+    width: 24px;
+
+    height: 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 2px solid #e2eaf1;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #8a98aa;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+}
+
+
+.journal-progress-step.active {
+
+    border-color: #1469c7;
+
+    background: #1469c7;
+
+    color: white;
+
+}
+
+
+/* FORM */
+
+.journal-form {
+
+    min-height: 430px;
+
+    padding: 30px;
+
+    border: 1px solid #e2eaf2;
+
+    border-radius: 22px;
+
+    background: white;
+
+    box-shadow:
+        0 10px 30px
+        rgba(29,75,118,.06);
+
+}
+
+
+.journal-step {
+
+    display: none;
+
+}
+
+
+.journal-step.active {
+
+    display: block;
+
+    animation:
+        journalStepIn .25s ease;
+
+}
+
+
+@keyframes journalStepIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(5px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.journal-step-label {
+
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #1469c7;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+}
+
+
+.journal-step h2 {
+
+    margin: 0 0 7px;
+
+    font-size: 23px;
+
+    font-weight: 850;
+
+}
+
+
+.journal-step > p {
+
+    margin: 0 0 20px;
+
+    color: #718197;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+}
+
+
+/* TEXTAREA */
+
+.journal-textarea {
+
+    width: 100%;
+
+    min-height: 230px;
+
+    box-sizing: border-box;
+
+    padding: 17px;
+
+    resize: vertical;
+
+    border: 1px solid #dce6ee;
+
+    border-radius: 14px;
+
+    outline: none;
+
+    background: #fbfdff;
+
+    color: #172d4f;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.journal-textarea:focus {
+
+    border-color: #8fc0e9;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(20,105,199,.08);
+
+}
+
+
+.journal-textarea.small {
+
+    min-height: 110px;
+
+    margin-top: 18px;
+
+}
+
+
+.journal-character-count {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 7px;
+
+    color: #96a3b1;
+
+    font-size: 9px;
+
+}
+
+
+.journal-character-count strong {
+
+    color: #7e8fa2;
+
+}
+
+
+/* EMOTION */
+
+.emotion-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+}
+
+
+.emotion-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 13px;
+
+    border: 1px solid #e1eaf2;
+
+    border-radius: 13px;
+
+    background: white;
+
+    color: #172d4f;
+
+    font-family: inherit;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+
+}
+
+
+.emotion-option span {
+
+    font-size: 10px;
+
+    font-weight: 750;
+
+}
+
+
+.emotion-option:hover {
+
+    border-color: #a9cbe8;
+
+    background: #f6fbff;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.emotion-option.selected {
+
+    border-color: #1469c7;
+
+    background: #eaf4ff;
+
+    box-shadow:
+        0 5px 15px
+        rgba(20,105,199,.09);
+
+}
+
+
+/* 3S */
+
+.three-s-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.three-s-card {
+
+    padding: 18px;
+
+    border: 1px solid #e2eaf2;
+
+    border-radius: 15px;
+
+    background: #fbfdff;
+
+}
+
+
+.three-s-card > span {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 29px;
+
+    height: 29px;
+
+    margin-bottom: 9px;
+
+    border-radius: 9px;
+
+    background: #eaf4ff;
+
+    color: #1469c7;
+
+    font-size: 9px;
+
+    font-weight: 850;
+
+}
+
+
+.three-s-card h3 {
+
+    margin: 0 0 4px;
+
+    font-size: 13px;
+
+}
+
+
+.three-s-card p {
+
+    margin: 0 0 12px;
+
+    color: #8190a2;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+}
+
+
+.three-s-card textarea {
+
+    width: 100%;
+
+    min-height: 130px;
+
+    box-sizing: border-box;
+
+    resize: vertical;
+
+    padding: 11px;
+
+    border: 1px solid #dce6ee;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: white;
+
+    color: #172d4f;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+
+}
+
+
+.three-s-card textarea:focus {
+
+    border-color: #8fc0e9;
+
+}
+
+
+/* NAVIGATION */
+
+.journal-navigation {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 17px;
+
+}
+
+
+.journal-back-btn {
+
+    padding: 11px 17px;
+
+    border: 1px solid #dce6ee;
+
+    border-radius: 11px;
+
+    background: white;
+
+    color: #718197;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+}
+
+
+.journal-next-btn {
+
+    padding: 11px 20px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #1469c7;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+
+.journal-save-status {
+
+    flex: 1;
+
+    color: #98a5b2;
+
+    text-align: center;
+
+    font-size: 9px;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 750px) {
+
+    .journal-page {
+
+        padding: 18px 14px;
+
+    }
+
+
+    .journal-header {
+
+        flex-direction: column;
+
+    }
+
+
+    .journal-step-counter {
+
+        align-self: flex-start;
+
+    }
+
+
+    .journal-form {
+
+        padding: 21px;
+
+    }
+
+
+    .emotion-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .three-s-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .emotion-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .journal-navigation {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .journal-save-status {
+
+        order: 3;
+
+        flex-basis: 100%;
+
+    }
+
+}
+
+/* =========================================================
+   C4 — TRẠNG THÁI LƯU THÀNH CÔNG
+========================================================= */
+
+.journal-save-status.journal-saved {
+
+    color: #2d9368;
+
+    font-weight: 800;
+
+    animation:
+        journalSavedIn .25s ease;
+
+}
+
+
+@keyframes journalSavedIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(3px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+/* =========================================================
+   C4 — TRẠNG THÁI LƯU NHẬT KÝ
+========================================================= */
+
+
+/* =========================
+   CHƯA LƯU
+========================= */
+
+.journal-save-status {
+
+    min-height: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #98a5b2;
+
+    font-size: 9px;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+
+}
+
+
+/* =========================
+   LƯU THÀNH CÔNG
+========================= */
+
+.journal-save-status.journal-saved {
+
+    color: #2d9368;
+
+    font-weight: 800;
+
+    animation:
+        journalSavedIn .3s ease;
+
+}
+
+
+@keyframes journalSavedIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(4px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================
+   LỖI
+========================= */
+
+.journal-save-status.validation-error {
+
+    color: #d85c68;
+
+    font-weight: 750;
+
+    animation:
+        journalValidationShake .3s ease;
+
+}
+
+
+@keyframes journalValidationShake {
+
+    0%,
+    100% {
+
+        transform:
+            translateX(0);
+
+    }
+
+    25% {
+
+        transform:
+            translateX(-4px);
+
+    }
+
+    50% {
+
+        transform:
+            translateX(4px);
+
+    }
+
+    75% {
+
+        transform:
+            translateX(-3px);
+
+    }
+
+}
+
+
+/* =========================
+   NÚT HOÀN THÀNH
+========================= */
+
+#journal-next {
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+#journal-next:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 7px 18px
+        rgba(20,105,199,.18);
+
+}
+
+
+#journal-next:active {
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================
+   NÚT QUAY LẠI
+========================= */
+
+#journal-back {
+
+    transition:
+        opacity .2s ease,
+        background .2s ease;
+
+}
+
+
+#journal-back:disabled {
+
+    opacity: .4;
+
+    cursor: not-allowed;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    .journal-save-status {
+
+        width: 100%;
+
+        order: 3;
+
+        margin-top: 4px;
+
+    }
+
+}
+
+/* =========================================================
+   C5 — TRẠNG THÁI SAU KHI LƯU
+========================================================= */
+
+
+/* =========================
+   TRẠNG THÁI CHUNG
+========================= */
+
+.journal-save-status {
+
+    min-height: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    color: #98a5b2;
+
+    font-size: 9px;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+
+}
+
+
+/* =========================
+   ICON THÀNH CÔNG
+========================= */
+
+.save-success-icon {
+
+    width: 18px;
+
+    height: 18px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e5f7ee;
+
+    color: #2d9368;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+}
+
+
+/* =========================
+   TRẠNG THÁI THÀNH CÔNG
+========================= */
+
+.journal-save-status.journal-saved {
+
+    color: #2d9368;
+
+    font-weight: 800;
+
+    animation:
+        journalSaved .35s ease;
+
+}
+
+
+@keyframes journalSaved {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(5px)
+            scale(.97);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================
+   ICON LỖI
+========================= */
+
+.save-error-icon {
+
+    width: 18px;
+
+    height: 18px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fdecef;
+
+    color: #d85c68;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+}
+
+
+/* =========================
+   TRẠNG THÁI LỖI
+========================= */
+
+.journal-save-status.validation-error {
+
+    color: #d85c68;
+
+    font-weight: 750;
+
+    animation:
+        journalSaveError .3s ease;
+
+}
+
+
+@keyframes journalSaveError {
+
+    0%,
+    100% {
+
+        transform:
+            translateX(0);
+
+    }
+
+    25% {
+
+        transform:
+            translateX(-4px);
+
+    }
+
+    75% {
+
+        transform:
+            translateX(4px);
+
+    }
+
+}
+
+
+/* =========================
+   NÚT ĐÃ LƯU
+========================= */
+
+#journal-next:disabled {
+
+    opacity: .85;
+
+    cursor: default;
+
+    transform: none;
+
+    box-shadow: none;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    .journal-save-status {
+
+        width: 100%;
+
+        order: 3;
+
+        margin-top: 5px;
+
+        text-align: center;
+
+    }
+
+}
+
+/* =========================================================
+   C6 — DASHBOARD NHẬT KÝ ĐÃ LƯU
+========================================================= */
+
+.recent-journals {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+}
+
+
+/* Nhật ký đã có phản hồi */
+
+.recent-journal-item.has-feedback {
+
+    border-color: #d9eee4;
+
+}
+
+
+.recent-journal-item.has-feedback
+.recent-journal-icon {
+
+    background: #eaf8f2;
+
+}
+
+
+/* Trạng thái chờ phản hồi */
+
+.recent-journal-status.waiting-feedback {
+
+    background: #fff4e6;
+
+    color: #c47a25;
+
+}
+
+
+/* Trạng thái đã phản hồi */
+
+.recent-journal-status.has-feedback {
+
+    background: #eaf8f2;
+
+    color: #2d9368;
+
+}
+
+
+/* Hiệu ứng khi nhật ký mới xuất hiện */
+
+.recent-journal-item {
+
+    animation:
+        recentJournalIn .3s ease;
+
+}
+
+
+@keyframes recentJournalIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(5px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .recent-journal-item {
+
+        padding: 10px;
+
+    }
+
+
+    .recent-journal-info strong {
+
+        max-width: 180px;
+
+    }
+
+}
+
+/* =========================================================
+   D2 — XEM LẠI NHẬT KÝ
+   CSS: danh sách + card + trạng thái + tìm kiếm
+========================================================= */
+
+
+/* =========================================================
+   01. KHUNG TRANG
+========================================================= */
+
+.review-page {
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 28px;
+
+    color: #172d4f;
+
+}
+
+
+/* =========================================================
+   02. HEADER
+========================================================= */
+
+.review-header {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.review-label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #1469c7;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+
+}
+
+
+.review-header h1 {
+
+    margin: 0 0 6px;
+
+    color: #172d4f;
+
+    font-size: 27px;
+
+    font-weight: 850;
+
+}
+
+
+.review-header p {
+
+    max-width: 620px;
+
+    margin: 0;
+
+    color: #718197;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   03. THANH TÌM KIẾM
+========================================================= */
+
+.review-toolbar {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+
+    padding: 12px;
+
+    border: 1px solid #e2eaf2;
+
+    border-radius: 15px;
+
+    background: white;
+
+    box-shadow:
+        0 7px 22px
+        rgba(29,75,118,.04);
+
+}
+
+
+.review-search-wrapper {
+
+    position: relative;
+
+    flex: 1;
+
+}
+
+
+.review-search-icon {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 13px;
+
+    transform:
+        translateY(-50%);
+
+    color: #8a98aa;
+
+    font-size: 13px;
+
+    pointer-events: none;
+
+}
+
+
+#review-search {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 11px 13px 11px 35px;
+
+    border: 1px solid #dce6ee;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #fbfdff;
+
+    color: #172d4f;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+#review-search::placeholder {
+
+    color: #a0adba;
+
+}
+
+
+#review-search:focus {
+
+    border-color: #8fc0e9;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(20,105,199,.07);
+
+}
+
+
+/* =========================================================
+   04. DANH SÁCH
+========================================================= */
+
+#review-journal-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+/* =========================================================
+   05. CARD NHẬT KÝ
+========================================================= */
+
+.review-journal-card {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    padding: 16px;
+
+    border: 1px solid #e1e9f1;
+
+    border-radius: 17px;
+
+    background: white;
+
+    box-shadow:
+        0 7px 20px
+        rgba(29,75,118,.045);
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+
+    animation:
+        reviewCardIn .3s ease;
+
+}
+
+
+.review-journal-card:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color: #c8ddec;
+
+    box-shadow:
+        0 12px 28px
+        rgba(29,75,118,.08);
+
+}
+
+
+/* =========================================================
+   06. ICON
+========================================================= */
+
+.review-journal-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #eaf4ff;
+
+    font-size: 19px;
+
+}
+
+
+.review-journal-card.has-feedback
+.review-journal-icon {
+
+    background: #eaf8f2;
+
+}
+
+
+/* =========================================================
+   07. NỘI DUNG CARD
+========================================================= */
+
+.review-journal-content {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+.review-journal-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 6px;
+
+}
+
+
+.review-journal-date {
+
+    color: #8a98aa;
+
+    font-size: 9px;
+
+    font-weight: 650;
+
+}
+
+
+.review-journal-content h3 {
+
+    overflow: hidden;
+
+    margin: 0 0 6px;
+
+    color: #172d4f;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+.review-emotion {
+
+    display: inline-block;
+
+    color: #718197;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   08. TRẠNG THÁI PHẢN HỒI
+========================================================= */
+
+.review-status {
+
+    flex-shrink: 0;
+
+    padding: 5px 9px;
+
+    border-radius: 8px;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+}
+
+
+.review-status.has-feedback {
+
+    background: #eaf8f2;
+
+    color: #2d9368;
+
+}
+
+
+.review-status.waiting-feedback {
+
+    background: #fff4e6;
+
+    color: #c47a25;
+
+}
+
+
+/* =========================================================
+   09. NÚT XEM CHI TIẾT
+========================================================= */
+
+.review-open-btn {
+
+    display: block;
+
+    margin-top: 10px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #1469c7;
+
+    font-family: inherit;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+
+.review-open-btn:hover {
+
+    text-decoration:
+        underline;
+
+}
+
+
+/* =========================================================
+   10. TRỐNG
+========================================================= */
+
+.review-empty {
+
+    padding: 55px 25px;
+
+    border: 1px dashed #d8e3ec;
+
+    border-radius: 19px;
+
+    background: white;
+
+    text-align: center;
+
+}
+
+
+.review-empty > div {
+
+    margin-bottom: 10px;
+
+    font-size: 30px;
+
+}
+
+
+.review-empty h3 {
+
+    margin: 0 0 6px;
+
+    color: #172d4f;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+}
+
+
+.review-empty p {
+
+    max-width: 350px;
+
+    margin: 0 auto;
+
+    color: #8997a8;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   11. ANIMATION
+========================================================= */
+
+@keyframes reviewCardIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(6px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   12. RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .review-page {
+
+        padding: 20px 14px;
+
+    }
+
+
+    .review-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .review-toolbar {
+
+        padding: 9px;
+
+    }
+
+
+    .review-journal-card {
+
+        padding: 13px;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .review-journal-top {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 6px;
+
+    }
+
+
+    .review-status {
+
+        align-self: flex-start;
+
+    }
+
+
+    .review-journal-content h3 {
+
+        white-space: normal;
+
+    }
+
+
+    .review-journal-icon {
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 17px;
+
+    }
+
+}
+
+/* =========================================================
+   D4 — CHI TIẾT NHẬT KÝ
+========================================================= */
+
+
+/* =========================================================
+   01. KHUNG CHI TIẾT
+========================================================= */
+
+.review-journal-detail {
+
+    width: 100%;
+
+    animation:
+        reviewDetailIn .3s ease;
+
+}
+
+
+@keyframes reviewDetailIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   02. CARD CHI TIẾT
+========================================================= */
+
+.review-detail-card {
+
+    overflow: hidden;
+
+    border: 1px solid #e1e9f1;
+
+    border-radius: 21px;
+
+    background: white;
+
+    box-shadow:
+        0 10px 30px
+        rgba(29,75,118,.06);
+
+}
+
+
+/* =========================================================
+   03. HEADER CHI TIẾT
+========================================================= */
+
+.review-detail-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 25px;
+
+    border-bottom: 1px solid #edf2f6;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fbfdff,
+            #f5faff
+        );
+
+}
+
+
+.review-detail-label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #1469c7;
+
+    font-size: 9px;
+
+    font-weight: 850;
+
+    letter-spacing: 1.3px;
+
+}
+
+
+.review-detail-header h2 {
+
+    max-width: 650px;
+
+    margin: 0 0 8px;
+
+    color: #172d4f;
+
+    font-size: 21px;
+
+    font-weight: 850;
+
+    line-height: 1.4;
+
+}
+
+
+.review-detail-date {
+
+    color: #8796a7;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   04. TRẠNG THÁI
+========================================================= */
+
+.review-detail-status {
+
+    flex-shrink: 0;
+
+    padding: 7px 11px;
+
+    border-radius: 9px;
+
+    font-size: 8px;
+
+    font-weight: 850;
+
+}
+
+
+.review-detail-status.has-feedback {
+
+    background: #eaf8f2;
+
+    color: #2d9368;
+
+}
+
+
+.review-detail-status.waiting-feedback {
+
+    background: #fff4e6;
+
+    color: #c47a25;
+
+}
+
+
+/* =========================================================
+   05. SECTION
+========================================================= */
+
+.review-detail-section {
+
+    padding: 21px 25px;
+
+    border-bottom: 1px solid #edf2f6;
+
+}
+
+
+.review-detail-section:last-of-type {
+
+    border-bottom: none;
+
+}
+
+
+.review-detail-section-label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #1469c7;
+
+    font-size: 8px;
+
+    font-weight: 850;
+
+    letter-spacing: 1.1px;
+
+}
+
+
+.review-detail-section h3 {
+
+    margin: 0 0 7px;
+
+    color: #263d5b;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+}
+
+
+.review-detail-section p {
+
+    max-width: 850px;
+
+    margin: 0;
+
+    color: #687b90;
+
+    font-size: 11px;
+
+    line-height: 1.8;
+
+    white-space: pre-wrap;
+
+}
+
+
+/* =========================================================
+   06. CẢM XÚC
+========================================================= */
+
+.review-detail-section:first-of-type h3 {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 7px 11px;
+
+    border-radius: 9px;
+
+    background: #f1f7fc;
+
+    color: #1469c7;
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================================
+   07. PHẢN HỒI GIÁO VIÊN
+========================================================= */
+
+.review-feedback-section {
+
+    margin: 18px 25px 25px;
+
+    padding: 19px;
+
+    border: 1px solid #e2eaf2;
+
+    border-radius: 15px;
+
+}
+
+
+.review-feedback-section.has-feedback {
+
+    border-color: #d7eee4;
+
+    background: #f8fdfb;
+
+}
+
+
+.review-feedback-section.waiting-feedback {
+
+    background: #fbfdff;
+
+}
+
+
+/* =========================================================
+   08. FEEDBACK CÓ NỘI DUNG
+========================================================= */
+
+.review-feedback-section.has-feedback p {
+
+    color: #426a58;
+
+    font-size: 11px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   09. ĐANG CHỜ PHẢN HỒI
+========================================================= */
+
+.review-feedback-waiting {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.review-feedback-waiting > span {
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #fff4e6;
+
+    font-size: 15px;
+
+}
+
+
+.review-feedback-waiting div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.review-feedback-waiting strong {
+
+    color: #51677f;
+
+    font-size: 10px;
+
+}
+
+
+.review-feedback-waiting small {
+
+    color: #95a2b0;
+
+    font-size: 8px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   10. KHÔNG TÌM THẤY
+========================================================= */
+
+.review-detail-empty {
+
+    padding: 60px 25px;
+
+    border: 1px dashed #d8e3ec;
+
+    border-radius: 19px;
+
+    background: white;
+
+    text-align: center;
+
+}
+
+
+.review-detail-empty > div {
+
+    margin-bottom: 9px;
+
+    font-size: 28px;
+
+}
+
+
+.review-detail-empty h3 {
+
+    margin: 0 0 6px;
+
+    color: #263d5b;
+
+    font-size: 14px;
+
+}
+
+
+.review-detail-empty p {
+
+    margin: 0;
+
+    color: #8997a8;
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================================
+   11. MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .review-detail-header {
+
+        flex-direction: column;
+
+        padding: 20px;
+
+    }
+
+
+    .review-detail-header h2 {
+
+        font-size: 18px;
+
+    }
+
+
+    .review-detail-section {
+
+        padding: 18px 20px;
+
+    }
+
+
+    .review-feedback-section {
+
+        margin:
+            15px 20px 20px;
+
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .review-detail-header {
+
+        gap: 12px;
+
+    }
+
+
+    .review-detail-status {
+
+        align-self: flex-start;
+
+    }
+
+
+    .review-detail-section p {
+
+        font-size: 10px;
+
+    }
+
+}
+
+/* =========================================================
+   E2 — GIAO DIỆN PHẢN HỒI GIÁO VIÊN
+========================================================= */
+
+/* Khung phản hồi trong trang Xem lại */
+
+.review-feedback-section {
+    margin-top: 28px;
+    padding: 24px;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Tiêu đề */
+
+.review-feedback-section
+.review-detail-section-label {
+    display: block;
+    margin-bottom: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+/* Có phản hồi */
+
+.review-feedback-section.has-feedback {
+    border-color: #c7d9f5;
+    background: #f8fbff;
+    box-shadow:
+        0 8px 24px rgba(30, 64, 175, 0.06);
+}
+
+.review-feedback-section.has-feedback
+.review-detail-section-label {
+    color: #2563eb;
+}
+
+
+/* Nội dung phản hồi */
+
+.review-feedback-section.has-feedback p {
+    margin: 0;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #374151;
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+
+/* Chờ phản hồi */
+
+.review-feedback-section.waiting-feedback {
+    border-color: #e5e7eb;
+    background: #fafafa;
+}
+
+.review-feedback-section.waiting-feedback
+.review-detail-section-label {
+    color: #6b7280;
+}
+
+
+/* Trạng thái chờ */
+
+.review-feedback-waiting {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.review-feedback-waiting > span {
+    flex: 0 0 auto;
+    font-size: 22px;
+}
+
+.review-feedback-waiting div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.review-feedback-waiting strong {
+    color: #374151;
+    font-size: 14px;
+}
+
+.review-feedback-waiting small {
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   TRẠNG THÁI TRÊN CARD NHẬT KÝ
+========================================================= */
+
+.recent-journal-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* Đã phản hồi */
+
+.recent-journal-status.has-feedback {
+    color: #166534;
+    background: #dcfce7;
+}
+
+
+/* Chờ phản hồi */
+
+.recent-journal-status.waiting-feedback {
+    color: #92400e;
+    background: #fef3c7;
+}
+
+
+/* =========================================================
+   CARD PHẢN HỒI GIÁO VIÊN
+========================================================= */
+
+.feedback-card {
+    position: relative;
+    padding: 22px;
+    margin-bottom: 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow:
+        0 8px 24px rgba(15, 23, 42, 0.05);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.feedback-card:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+
+/* Header feedback */
+
+.feedback-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.teacher-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border-radius: 50%;
+    background: #e8eefc;
+    color: #3158a6;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.feedback-header h3 {
+    margin: 0 0 3px;
+    color: #1f2937;
+    font-size: 15px;
+}
+
+.feedback-header span {
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+
+/* Nội dung */
+
+.feedback-content {
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: #f8fafc;
+}
+
+.feedback-content p {
+    margin: 0;
+    color: #374151;
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+    .review-feedback-section {
+        padding: 18px;
+        margin-top: 20px;
+    }
+
+    .review-feedback-section.has-feedback p {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .review-feedback-waiting {
+        padding: 14px;
+    }
+
+    .feedback-card {
+        padding: 17px;
+        border-radius: 15px;
+    }
+
+    .feedback-content {
+        padding: 14px;
+    }
+
+    .recent-journal-status {
+        font-size: 11px;
+    }
+
+}
+
+/* =========================================================
+   F2 — DASHBOARD GIÁO VIÊN
+========================================================= */
+
+.teacher-page {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+/* Header */
+
+.teacher-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.teacher-header-label {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.teacher-header h1 {
+    margin: 0 0 8px;
+    color: var(--text-main);
+    font-size: 31px;
+    line-height: 1.25;
+    font-weight: 800;
+}
+
+.teacher-header p {
+    margin: 0;
+    max-width: 650px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* Teacher profile */
+
+.teacher-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+}
+
+.teacher-profile-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-weight: 800;
+}
+
+.teacher-profile strong {
+    display: block;
+    color: var(--text-main);
+    font-size: 13px;
+}
+
+.teacher-profile span {
+    display: block;
+    margin-top: 2px;
+    color: var(--text-light);
+    font-size: 11px;
+}
+
+/* Statistics */
+
+.teacher-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.teacher-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+}
+
+.teacher-stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    border-radius: 14px;
+    background: var(--primary-light);
+    font-size: 21px;
+}
+
+.teacher-stat-card:nth-child(2)
+.teacher-stat-icon {
+    background: var(--success-light);
+}
+
+.teacher-stat-card:nth-child(3)
+.teacher-stat-icon {
+    background: var(--secondary-light);
+}
+
+.teacher-stat-card strong {
+    display: block;
+    color: var(--text-main);
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+.teacher-stat-card span {
+    display: block;
+    margin-top: 6px;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+/* Section */
+
+.teacher-section {
+    margin-bottom: 28px;
+}
+
+.teacher-section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 16px;
+}
+
+.teacher-section-header span {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-light);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.teacher-section-header h2 {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 20px;
+    font-weight: 800;
+}
+
+/* Journal list */
+
+.teacher-journal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.teacher-journal-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 22px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.teacher-journal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(37, 107, 104, 0.2);
+}
+
+.teacher-journal-main {
+    min-width: 0;
+}
+
+.teacher-journal-date {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-light);
+    font-size: 11px;
+}
+
+.teacher-journal-card h3 {
+    margin: 0 0 5px;
+    color: var(--text-main);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.teacher-journal-card p {
+    margin: 0;
+    max-width: 720px;
+    overflow: hidden;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.6;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Status */
+
+.teacher-journal-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    padding: 6px 11px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.teacher-journal-status.replied {
+    color: #166534;
+    background: #dcfce7;
+}
+
+.teacher-journal-status.pending {
+    color: #92400e;
+    background: #fef3c7;
+}
+
+/* Action */
+
+.teacher-journal-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-width: 105px;
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--primary);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.teacher-journal-action:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    transform: translateY(-1px);
+}
+
+/* Empty state */
+
+.teacher-empty {
+    padding: 45px 25px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+.teacher-empty-icon {
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.teacher-empty h3 {
+    margin: 0 0 5px;
+    color: var(--text-main);
+    font-size: 16px;
+}
+
+.teacher-empty p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 13px;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+
+    .teacher-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .teacher-header {
+        flex-direction: column;
+    }
+
+    .teacher-profile {
+        width: 100%;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .teacher-header h1 {
+        font-size: 25px;
+    }
+
+    .teacher-journal-card {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .teacher-journal-card p {
+        white-space: normal;
+    }
+
+    .teacher-journal-action {
+        width: 100%;
+    }
+
+}
+
+/* =========================================================
+   F4 — HOÀN THIỆN GIAO DIỆN GIÁO VIÊN
+========================================================= */
+
+/* Header giáo viên */
+.teacher-page .teacher-header {
+    margin-bottom: 28px;
+}
+
+.teacher-page .teacher-header h1 {
+    margin-top: 8px;
+}
+
+/* Danh sách nhật ký */
+.teacher-page .teacher-journal-section {
+    margin-bottom: 28px;
+}
+
+.teacher-page .teacher-journal-card {
+    min-height: 72px;
+}
+
+/* Nút Xem */
+.teacher-page .teacher-view-btn {
+    min-width: 70px;
+    text-align: center;
+}
+
+/* Chi tiết nhật ký */
+.teacher-page .teacher-detail {
+    scroll-margin-top: 25px;
+}
+
+.teacher-page .teacher-detail .section-title h2 {
+    margin-top: 5px;
+}
+
+/* Phần phản hồi */
+.teacher-page .teacher-feedback {
+    position: relative;
+    overflow: hidden;
+}
+
+.teacher-page .teacher-feedback::before {
+    content: "💬";
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    font-size: 24px;
+    opacity: 0.18;
+}
+
+.teacher-page .teacher-feedback textarea {
+    position: relative;
+    z-index: 1;
+}
+
+.teacher-page .teacher-feedback .primary-btn {
+    position: relative;
+    z-index: 1;
+}
+
+/* Trạng thái 3S */
+.teacher-page .three-s-status {
+    min-width: 85px;
+}
+
+/* Hover card */
+.teacher-page .teacher-journal-card {
+    cursor: default;
+}
+
+.teacher-page .teacher-journal-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+
+    .teacher-page .teacher-journal-card {
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+    }
+
+    .teacher-page .situation-info {
+        display: none;
+    }
+
+    .teacher-page .three-s-status {
+        grid-column: 1;
+    }
+
+    .teacher-page .teacher-view-btn {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+    }
+
+    .teacher-page .teacher-detail {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .teacher-page .teacher-journal-card {
+        grid-template-columns: 1fr;
+    }
+
+    .teacher-page .teacher-view-btn {
+        grid-column: auto;
+        grid-row: auto;
+        width: 100%;
+    }
+
+    .teacher-page .three-s-status {
+        grid-column: auto;
+    }
+
+}
