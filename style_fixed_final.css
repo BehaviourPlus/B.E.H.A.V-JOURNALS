@@ -11583,3 +11583,168 @@ button[data-page="home"] {
     }
 
 }
+/* =========================================================
+   E2 — FORM PHẢN HỒI GIÁO VIÊN
+========================================================= */
+
+.teacher-journal-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.teacher-feedback-btn {
+    padding: 9px 14px;
+    font-size: 12px;
+}
+
+.teacher-feedback-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.teacher-feedback-modal.active {
+    display: flex;
+}
+
+.teacher-feedback-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(24, 45, 44, 0.42);
+    backdrop-filter: blur(3px);
+}
+
+.teacher-feedback-dialog {
+    position: relative;
+    z-index: 1;
+    width: min(680px, 100%);
+    max-height: min(720px, calc(100vh - 48px));
+    overflow: auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.teacher-feedback-dialog-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 26px 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.teacher-feedback-dialog-header h2 {
+    margin: 4px 0 3px;
+    color: var(--text-main);
+    font-size: 22px;
+    line-height: 1.3;
+}
+
+.teacher-feedback-dialog-header p {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.teacher-feedback-dialog-body {
+    padding: 22px 26px;
+}
+
+.teacher-feedback-dialog-body label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-main);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#teacher-feedback-editor {
+    width: 100%;
+    min-height: 170px;
+    resize: vertical;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: #fbfdfc;
+    color: var(--text-main);
+    font: inherit;
+    font-size: 14px;
+    line-height: 1.65;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+#teacher-feedback-editor:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37, 107, 104, .08);
+}
+
+.teacher-feedback-dialog-hint {
+    margin-top: 10px;
+    color: var(--text-light);
+    font-size: 12px;
+}
+
+.teacher-feedback-dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 16px 26px 22px;
+    border-top: 1px solid var(--border);
+}
+
+#feedback .feedback-list {
+    display: grid;
+    gap: 14px;
+}
+
+@media (max-width: 700px) {
+    .teacher-feedback-dialog {
+        border-radius: 18px;
+    }
+
+    .teacher-feedback-dialog-header,
+    .teacher-feedback-dialog-body,
+    .teacher-feedback-dialog-footer {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .teacher-journal-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+/* =========================================================
+   NÚT GIAO DIỆN GIÁO VIÊN
+========================================================= */
+
+.menu-divider {
+    width: 100%;
+    height: 1px;
+    margin: 14px 0;
+    background: var(--border);
+}
+
+.teacher-menu-btn {
+    margin-top: 2px;
+}
+
+.teacher-menu-btn:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.teacher-menu-btn.active {
+    background: var(--primary);
+    color: #fff;
+}

@@ -2732,7 +2732,7 @@ function renderTeacherFeedback() {
 
     const container =
         document.querySelector(
-            "#review-feedback .feedback-list"
+            "#feedback .feedback-list"
         );
 
 
@@ -3363,15 +3363,22 @@ function renderTeacherRecentJournals() {
                         </div>
 
 
-                        <button
-                            class="teacher-view-btn"
-                            data-teacher-journal="${escapeHTML(
-                                journal.id
-                            )}">
-
-                            Xem →
-
-                        </button>
+                        <div class="teacher-journal-actions">
+                            <button
+                                class="teacher-view-btn"
+                                data-teacher-journal="${escapeHTML(
+                                    journal.id
+                                )}">
+                                Xem →
+                            </button>
+                            <button
+                                class="primary-btn teacher-feedback-btn"
+                                data-feedback-journal="${escapeHTML(
+                                    journal.id
+                                )}">
+                                ${hasFeedback ? "Sửa phản hồi" : "Phản hồi"}
+                            </button>
+                        </div>
 
                     </article>
                 `;
@@ -3411,6 +3418,15 @@ function renderTeacherRecentJournals() {
 
         });
 
+
+    container
+        .querySelectorAll("[data-feedback-journal]")
+        .forEach(button => {
+            button.addEventListener("click", event => {
+                event.stopPropagation();
+                openTeacherFeedback(button.dataset.feedbackJournal);
+            });
+        });
 }
 
 
@@ -4266,97 +4282,101 @@ function renderTeacherJournalModal(
    E1 — GỬI / LƯU PHẢN HỒI GIÁO VIÊN
 ========================================================= */
 
+function ensureTeacherFeedbackModal() {
+    let modal = document.querySelector("#teacher-feedback-modal");
+    if (modal) return modal;
+
+    modal = document.createElement("div");
+    modal.id = "teacher-feedback-modal";
+    modal.className = "teacher-feedback-modal";
+    modal.innerHTML = `
+        <div class="teacher-feedback-modal-backdrop" data-close-feedback-modal></div>
+        <div class="teacher-feedback-dialog" role="dialog" aria-modal="true" aria-labelledby="teacher-feedback-title">
+            <div class="teacher-feedback-dialog-header">
+                <div>
+                    <span class="welcome-label">PHẢN HỒI GIÁO VIÊN</span>
+                    <h2 id="teacher-feedback-title">Viết phản hồi cho học sinh</h2>
+                    <p id="teacher-feedback-student"></p>
+                </div>
+                <button type="button" class="modal-close" data-close-feedback-modal aria-label="Đóng">×</button>
+            </div>
+            <div class="teacher-feedback-dialog-body">
+                <label for="teacher-feedback-editor">Lời phản hồi</label>
+                <textarea id="teacher-feedback-editor" rows="7" maxlength="1500" placeholder="Nhập nhận xét dành cho học sinh..."></textarea>
+                <div class="teacher-feedback-dialog-hint">Phản hồi sẽ được lưu và hiển thị ngay trong <strong>Tổng quan</strong> và tab <strong>Phản hồi giáo viên</strong> ở <strong>Xem lại</strong>.</div>
+            </div>
+            <div class="teacher-feedback-dialog-footer">
+                <button type="button" class="secondary-btn" data-close-feedback-modal>Hủy</button>
+                <button type="button" class="primary-btn" id="save-teacher-feedback">Gửi phản hồi</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+    modal.querySelectorAll("[data-close-feedback-modal]").forEach(button => {
+        button.addEventListener("click", () => modal.classList.remove("active"));
+    });
+    return modal;
+}
+
+function saveTeacherFeedback(journalId, content) {
+    const journalIndex = journals.findIndex(item => String(item.id) === String(journalId));
+    if (journalIndex === -1) {
+        showToast("Không tìm thấy nhật ký để lưu phản hồi.");
+        return false;
+    }
+
+    journals[journalIndex].feedback = {
+        content: content.trim(),
+        teacherId: currentTeacher?.id || "teacher_001",
+        teacherName: currentTeacher?.name || "Nguyễn Thị A",
+        date: new Date().toISOString()
+    };
+
+    saveJournals();
+    if (typeof renderTeacherDashboard === "function") renderTeacherDashboard();
+    if (typeof renderTeacherStudents === "function") renderTeacherStudents();
+    if (typeof renderTeacherRecentJournals === "function") renderTeacherRecentJournals();
+    if (typeof renderReviewPage === "function") renderReviewPage();
+    if (typeof renderTeacherFeedback === "function") renderTeacherFeedback();
+    return true;
+}
+
 function openTeacherFeedback(journalId) {
-
-    const journal =
-        findJournalById(journalId);
-
+    const journal = findJournalById(journalId);
     if (!journal) {
         showToast("Không tìm thấy nhật ký.");
         return;
     }
 
+    const modal = ensureTeacherFeedbackModal();
+    const editor = modal.querySelector("#teacher-feedback-editor");
+    const studentLabel = modal.querySelector("#teacher-feedback-student");
+    const saveButton = modal.querySelector("#save-teacher-feedback");
+
     const currentFeedback =
-        journal.feedback &&
-        typeof journal.feedback === "object"
+        journal.feedback && typeof journal.feedback === "object"
             ? journal.feedback.content || ""
             : "";
 
-    const teacherName =
-        "Cô Nguyễn Thị A";
+    editor.value = currentFeedback;
+    studentLabel.textContent = `${journal.studentName || "Học sinh"} · ${journal.date || ""}`;
+    modal.classList.add("active");
 
-    const feedback =
-        window.prompt(
-            "Nhập phản hồi dành cho học sinh:",
-            currentFeedback
-        );
-
-    /* Người dùng bấm Hủy */
-    if (feedback === null) {
-        return;
-    }
-
-    const content =
-        feedback.trim();
-
-    /* Không cho gửi phản hồi rỗng */
-    if (!content) {
-        showToast(
-            "Bạn hãy nhập nội dung phản hồi."
-        );
-        return;
-    }
-
-    /* Tìm đúng nhật ký trong mảng hiện tại */
-    const journalIndex =
-        journals.findIndex(
-            item =>
-                String(item.id) ===
-                String(journalId)
-        );
-
-    if (journalIndex === -1) {
-        showToast(
-            "Không tìm thấy nhật ký để lưu phản hồi."
-        );
-        return;
-    }
-
-    /* Lưu phản hồi */
-    journals[journalIndex].feedback = {
-        content: content,
-        teacherName: teacherName,
-        date: new Date().toISOString()
+    saveButton.onclick = () => {
+        const content = editor.value.trim();
+        if (!content) {
+            showToast("Bạn hãy nhập nội dung phản hồi.");
+            editor.focus();
+            return;
+        }
+        if (saveTeacherFeedback(journalId, content)) {
+            modal.classList.remove("active");
+            showToast("Đã gửi phản hồi cho học sinh.");
+        }
     };
 
-    /* Ghi lại localStorage */
-    saveJournals();
-
-    /* Cập nhật lại dữ liệu đang dùng */
-    journal.feedback =
-        journals[journalIndex].feedback;
-
-    /* Cập nhật giao diện */
-    renderTeacherStudents();
-    renderTeacherRecentJournals();
-
-    if (
-        typeof renderReviewPage ===
-        "function"
-    ) {
-        renderReviewPage();
-    }
-
-    if (
-        typeof renderTeacherFeedback ===
-        "function"
-    ) {
-        renderTeacherFeedback();
-    }
-
-    showToast(
-        "Đã gửi phản hồi cho học sinh."
-    );
+    requestAnimationFrame(() => editor.focus());
 }
 
 /* =========================================================
